@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '../core/layout'
 import { GithubProject } from './github-project'
-import { OnlineDemo } from './online-demo'
 import './projects.scss'
 
 function ProjectsHeader() {
@@ -34,7 +33,7 @@ function ProjectsList() {
 export default function Projects() {
     useEffect(() => {
         document.title = "Naor Tedgi : Projects";
-    }, ["Projects"]);
+    }, []);
     return (
         <div className="projects-container">
             <Layout>

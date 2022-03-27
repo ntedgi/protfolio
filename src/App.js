@@ -1,8 +1,6 @@
 import React from "react";
 import {
   HashRouter as Router,
-  Routes,
-  Route,
   useRoutes,
 } from "react-router-dom";
 import Home from './components/home'
@@ -15,7 +13,6 @@ const App = () => {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/projects", element: <Projects /> },
-    // ...
   ]);
   return routes;
 };

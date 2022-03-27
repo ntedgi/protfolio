@@ -6,7 +6,7 @@ export default function Home() {
 
     useEffect(() => {
         document.title = "Naor Tedgi : Home Page";
-    }, ["Home Page"]);
+    }, []);
 
     return (
         <div>

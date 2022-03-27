@@ -25,7 +25,7 @@ function Name(props) {
                     const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                     setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                 })
-        }, [])
+        }, [props.name])
 
     return (
         <div>
@@ -78,7 +78,7 @@ function Languages(props) {
                 .then(data => {
                     setState(data)
                 })
-        }, [])
+        }, [props.name])
 
     if (Object.keys(state).length > 0) {
         return (
