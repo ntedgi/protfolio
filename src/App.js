@@ -7,12 +7,11 @@ import Home from './components/home'
 import Projects from './components/projects'
 
 
-
 const App = () => {
 
   let routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/projects", element: <Projects /> },
+    { path: "/projects", element: <Projects /> }
   ]);
   return routes;
 };

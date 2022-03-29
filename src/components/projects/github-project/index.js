@@ -21,7 +21,6 @@ function Name(props) {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                    debugger
                     const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                     setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                 })

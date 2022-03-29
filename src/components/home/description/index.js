@@ -3,6 +3,7 @@ import './description.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare, faTwitterSquare, faGithubSquare, faGitlab, faInstagramSquare, faDocker, faStackOverflow, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
+import MediaQuery from 'react-responsive'
 
 function AboutMe() {
     return (
@@ -53,7 +54,10 @@ export default function Description() {
     return (
         <div className='description'>
             <AboutMe />
-            <Contact />
+            <MediaQuery minWidth={1224}>
+                <Contact />
+            </MediaQuery>
+
         </div>
     )
 }

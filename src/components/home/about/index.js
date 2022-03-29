@@ -1,6 +1,8 @@
 import React from 'react'
 import profilePic from '../../../assets/31243793.jpeg';
 import './about.scss'
+import MediaQuery from 'react-responsive'
+
 function ProfilePic() {
     return (
         <div className='avatar-border'>
@@ -10,9 +12,20 @@ function ProfilePic() {
 }
 function FullName() {
     return (
-        <div className='page-title'>
-            <span>Naor Shlomo Tedgi</span>
-        </div>
+        <div>
+            <MediaQuery minWidth={1224}>
+                <div className='page-title'>
+                    <span>Naor Shlomo Tedgi</span>
+                </div>
+            </MediaQuery>
+
+            <MediaQuery maxWidth={1224}>
+                <div className='page-title-small'>
+                    <span>Naor Shlomo Tedgi</span>
+                </div>
+            </MediaQuery>
+        </div >
+
     )
 }
 
