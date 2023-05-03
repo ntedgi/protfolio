@@ -10,7 +10,7 @@ function ProjectsHeader() {
                 <span>Projects</span>
             </div>
             <div className='info'>
-                Open Source Project and Previously Project from Compenies i worked with.
+                Collection of my open source work mainly written in Kotlin and NodeJS.
             </div>
         </div>
     )
@@ -20,6 +20,8 @@ function ProjectsList() {
     return (
         <div className='projects'>
             <GithubProject name="node-efficientnet" npm={"https://www.npmjs.com/package/node-efficientnet"} />
+            <GithubProject name="infra-meetings"/>
+            <GithubProject name="kube-argocd-helm-workshop"/>
             <GithubProject name="cld3-kotlin" />
             <GithubProject name="NLP-HashTag-Parser" />
             <GithubProject name="express-body-parser-error-handler" npm={"https://www.npmjs.com/package/express-body-parser-error-handler"} />

@@ -15,13 +15,13 @@ function FullName() {
         <div>
             <MediaQuery minWidth={1224}>
                 <div className='page-title'>
-                    <span>Naor Shlomo Tedgi</span>
+                    <span>Naor Tedgi</span>
                 </div>
             </MediaQuery>
 
             <MediaQuery maxWidth={1224}>
                 <div className='page-title-small'>
-                    <span>Naor Shlomo Tedgi</span>
+                    <span>Naor Tedgi</span>
                 </div>
             </MediaQuery>
         </div >
@@ -33,7 +33,7 @@ function JobTitle() {
     return (
         <div>
             <div className='job-title'>
-                {`Full Stack Developer at `}<a className='link' href='https://www.is.com/' target="_blank" rel="noreferrer">IronSource</a>
+                {`Senior Full Stack Developer at `}<a className='link' href='https://www.is.com/' target="_blank" rel="noreferrer">Unity ( IronSource )</a>
             </div>
             <div className='job-title'>
                 {`Software Engineer , Husband, Father, גולנצ'יק.`}

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMediaQuery } from 'react-responsive'
 import MediaQuery from 'react-responsive'
 
-import { faAddressCard, faProjectDiagram } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faProjectDiagram, faHome } from '@fortawesome/free-solid-svg-icons'
 const MenuButton = (props) => {
     let navigate = useNavigate();
     const isDesktopOrLaptop = useMediaQuery({
@@ -13,7 +13,7 @@ const MenuButton = (props) => {
     })
     return (
         <div className={`header-button ${props.cls}`} onClick={() => { navigate(props.path); }} >
-            {props.icon ?? <FontAwesomeIcon icon={faProjectDiagram} />}
+            <FontAwesomeIcon icon={props.icon} />
             {isDesktopOrLaptop && <span className={`header-button uri`} >{props.text}</span>}
         </div >
     )
@@ -37,9 +37,9 @@ export default function Header() {
     return (
         <MediaQuery minWidth={1224}>
             <div className="header-container">
-                <MenuButton text="NAOR TEDGI" path="/" cls="name" icon={false} />
+                <MenuButton text="NAOR TEDGI" path="/" cls="name" icon={faHome} />
                 <div className='menus'>
-                    <MenuButton text="PROJECTS" path="/projects" cls="menu" />
+                    <MenuButton text="PROJECTS" path="/projects" cls="menu" icon={faProjectDiagram} />
                     <DownloadFile text="DOWNLOAD RESUME" cls="link" />
                 </div>
             </div>
