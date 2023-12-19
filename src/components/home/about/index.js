@@ -33,10 +33,10 @@ function JobTitle() {
     return (
         <div>
             <div className='job-title'>
-                {`Senior Full Stack Developer at `}<a className='link' href='https://www.is.com/' target="_blank" rel="noreferrer">Unity ( IronSource )</a>
+                {`Tech Lead and Individual Contributor at `}<a className='link' href='https://www.is.com/' target="_blank" rel="noreferrer">Unity</a>
             </div>
             <div className='job-title'>
-                {`Software Engineer , Husband, Father, גולנצ'יק.`}
+                {`Software Ninjaneer 🥷, Husband, Father, גולנצ'יק.`}
             </div>
             <div className='job-title'>
                 {`previously worked at `}<a className='link' href='https://voyagerlabs.co/' target="_blank" rel="noreferrer">Voyager Labs</a> and <a className='link' href='https://www.monday.com/' target="_blank" rel="noreferrer">Monday.com</a>
