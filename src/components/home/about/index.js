@@ -1,31 +1,12 @@
 import React from 'react'
 import profilePic from '../../../assets/31243793.jpeg';
 import './about.scss'
-import MediaQuery from 'react-responsive'
 
 function ProfilePic() {
     return (
         <div className='avatar-border'>
-            <img className="avatar" src={profilePic} alt='avatar' />
+            <img className="avatar" src={profilePic} alt='avatar' width="40px"/>
         </div>
-    )
-}
-function FullName() {
-    return (
-        <div>
-            <MediaQuery minWidth={1224}>
-                <div className='page-title'>
-                    <span>Naor Tedgi</span>
-                </div>
-            </MediaQuery>
-
-            <MediaQuery maxWidth={1224}>
-                <div className='page-title-small'>
-                    <span>Naor Tedgi</span>
-                </div>
-            </MediaQuery>
-        </div >
-
     )
 }
 
@@ -51,7 +32,6 @@ export default function About() {
     return (
         <div className='about'>
             <ProfilePic />
-            <FullName />
             <JobTitle />
         </div>
     )
