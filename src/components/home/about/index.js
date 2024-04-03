@@ -1,25 +1,16 @@
 import React from 'react'
-import profilePic from '../../../assets/31243793.jpeg';
 import './about.scss'
-
-function ProfilePic() {
+import Description from '../description'
+function JobTitleDiscriptons() {
     return (
-        <div className='avatar-border'>
-            <img className="avatar" src={profilePic} alt='avatar' width="40px"/>
-        </div>
-    )
-}
-
-function JobTitle() {
-    return (
-        <div>
-            <div className='job-title'>
+        <div className='job-title-discriptopn-container'>
+            <div className='jtd-text'>
                 {`Tech Lead and Individual Contributor at `}<a className='link' href='https://www.is.com/' target="_blank" rel="noreferrer">Unity</a>
             </div>
-            <div className='job-title'>
+            <div className='jtd-text'>
                 {`Software Ninjaneer 🥷, Husband, Father, גולנצ'יק.`}
             </div>
-            <div className='job-title'>
+            <div className='jtd-text'>
                 {`previously worked at `}<a className='link' href='https://voyagerlabs.co/' target="_blank" rel="noreferrer">Voyager Labs</a> and <a className='link' href='https://www.monday.com/' target="_blank" rel="noreferrer">Monday.com</a>
 
             </div>
@@ -27,12 +18,24 @@ function JobTitle() {
     )
 }
 
+function Name() {
+    return <h1 className='about-name'>Naor Tedgi</h1>
+}
+function JobTitle() {
+    return <h1 className='about-job-title'>Tech Lead and Individual Contributor at Unity</h1>
+}
 
 export default function About() {
+    
     return (
         <div className='about'>
-            <ProfilePic />
-            <JobTitle />
+            <div>
+                <Name />
+                <JobTitle />
+                <JobTitleDiscriptons />
+            </div>
+            <Description />
+
         </div>
     )
 }

@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+    background-color: #151515;
+}
+
+/* YourComponent.css */
+.container {
+    position: relative; 
+  }
+  
+  .container::before,
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10px; /* Adjust height for the shadow size */
+    background: rgba(0, 0, 0, 0.1); /* Shadow color */
+  }
+  
+  .container::before {
+    top: -10px; /* Position the shadow above the container */
+    box-shadow: 0px 4px 20px 20px rgba(0, 0, 0, 0.8); /* Shadow properties */
+  }
+  
+  .container::after {
+    bottom: -10px; /* Position the shadow below the container */
+    box-shadow: 0px -4px 20px 20px rgba(0, 0, 0, 0.8); /* Shadow properties */
+  }
+  
+  
+  .static-side,
+  .scrolling-side {
+    flex: 1;
+    display: flex;
+    overflow-y: auto;
+    scroll-behavior: smooth; /* Smoother scrolling experience */ 
+    padding: 88px 0px 0px 88px;
+
+  }
+  
+  .static-side {
+    background-color: #151515
+  }
+  
+  .scrolling-side {
+    background-color: #151515
+    
+  }
+  

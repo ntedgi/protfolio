@@ -1,34 +1,33 @@
-import React, { useEffect } from 'react';
-import Layout from '../core/layout'
+import React, { useEffect, useState } from 'react';
 import { GithubProject } from './github-project'
 import './projects.scss'
 
-function ProjectsHeader() {
-    return (
-        <div className='project-header'>
-            <div className='project-header-title'>
-                <span>Projects</span>
-            </div>
-            <div className='info'>
-                Collection of my open source work mainly written in Kotlin and NodeJS.
-            </div>
-        </div>
-    )
-}
+function GithubProjecPlaceHolder() {
+    return <div className='github-placeholder'></div>
 
+}
 function ProjectsList() {
+    const [isShadowed, setIsShadowed] = useState(false);
+    const onElementMouseEnter = () => {
+        setIsShadowed(true);
+    };
+
+    const onElementMouseLeave = () => {
+        setIsShadowed(false);
+    };
+
     return (
-        <div className='projects'>
-            <GithubProject name="node-efficientnet" npm={"https://www.npmjs.com/package/node-efficientnet"} />
-            <GithubProject name="infra-meetings"/>
-            <GithubProject name="kube-argocd-helm-workshop"/>
-            <GithubProject name="cld3-kotlin" />
-            <GithubProject name="NLP-HashTag-Parser" />
-            <GithubProject name="express-body-parser-error-handler" npm={"https://www.npmjs.com/package/express-body-parser-error-handler"} />
-            <GithubProject name="albert-fine-tuning-squad-2.0" />
-            <GithubProject name="mocha-parallel-tests" npm={"https://www.npmjs.com/package/mocha9-parallel-tests"} />
-            <GithubProject name="data-stream-counter" />
-            <GithubProject name="universal-sentence-encoder" />
+        <div className='projects' >
+            <GithubProject name="node-efficientnet" npm={"https://www.npmjs.com/package/node-efficientnet"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="infra-meetings" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="kube-argocd-helm-workshop" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="cld3-kotlin" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="NLP-HashTag-Parser" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="express-body-parser-error-handler" npm={"https://www.npmjs.com/package/express-body-parser-error-handler"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            {/* <GithubProject name="albert-fine-tuning-squad-2.0" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="mocha-parallel-tests" npm={"https://www.npmjs.com/package/mocha9-parallel-tests"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="data-stream-counter" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+            <GithubProject name="universal-sentence-encoder" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} /> */}
         </div>
     )
 }
@@ -38,10 +37,8 @@ export default function Projects() {
     }, []);
     return (
         <div className="projects-container">
-            <Layout>
-                <ProjectsHeader />
-                <ProjectsList />
-            </Layout>
+            <GithubProjecPlaceHolder />
+            <ProjectsList />
         </div>
     )
 }
