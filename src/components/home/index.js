@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import About from './about'
 import "./app.scss"
 import Projects from '../projects';
-export default function Home(props) {
+export default function Home() {
 
     useEffect(() => {
         document.title = "Naor Tedgi";
     }, []);
 
     useEffect(() => {
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = "scroll"
         };
