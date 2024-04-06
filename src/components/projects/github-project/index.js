@@ -15,6 +15,7 @@ function Wrap(props) {
 
 function Name(props) {
     const [state, setState] = useState({})
+    const { setClickUrl } = props;
     useEffect(
         () => {
             fetch(`https://api.github.com/repos/ntedgi/${props.name}`)
@@ -25,7 +26,7 @@ function Name(props) {
                     setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                 })
         }, [props.name])
-
+    setClickUrl(state.html_url)
     return (
         <div>
             <div className='project-line'>
@@ -51,7 +52,7 @@ function Name(props) {
                         <Wrap count={state.stargazers_count} icon={faStar} />
                     </div>
                 </div>
-          
+
 
             </div>
         </div>)
@@ -94,6 +95,7 @@ function Languages(props) {
 
 export function GithubProject(props) {
     const [isHovered, setIsHovered] = useState(false);
+    const [clickUrl, setClickUrl] = useState(false);
     const { isShadowed, onElementMouseEnter, onElementMouseLeave } = props;
     let shouldShadow = isHovered ? '' : isShadowed
     const handleMouseEnter = () => {
@@ -110,9 +112,10 @@ export function GithubProject(props) {
         <div className={`gh-project-container ${isHovered ? 'hovered' : ''} ${shouldShadow ? 'shedowed' : ''}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={() => { window.open(clickUrl, "_blank") }}
         >
             <Languages name={props.name} />
-            <Name name={props.name} npm={props.npm} />
+            <Name name={props.name} npm={props.npm} setClickUrl={setClickUrl} />
         </div>
 
     )

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import About from './about'
 import "./app.scss"
 import Projects from '../projects';
@@ -9,37 +9,20 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"
         return () => {
-            document.body.style.overflow = "scroll"
+            document.body.style.overflow = "scroll";
         };
     }, []);
 
-    const componentRef = useRef(null);
-    useEffect(() => {
-        function handleScroll(event) {
-            const component = componentRef.current;
-
-            if (component) {
-                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-                const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
-                component.scrollTop = scrollPercentage * (component.scrollHeight - component.clientHeight);
-            }
-
-            else {
-                event.preventDefoult()
-            }
-        }
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     return (
         <div className='container' >
-            <div className="static-side" ref={componentRef} >
+            <div className="static-side">
+
                 <About />
             </div>
-            <div className="scrolling-side" ref={componentRef} >
+            <div className="scrolling-side" >
                 <Projects />
             </div>
         </div>
