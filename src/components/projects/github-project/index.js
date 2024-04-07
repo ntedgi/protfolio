@@ -15,18 +15,20 @@ function Wrap(props) {
 
 function Name(props) {
     const [state, setState] = useState({})
-    const { setClickUrl } = props;
     useEffect(
         () => {
+            const { setClickUrl } = props;
+
             fetch(`https://api.github.com/repos/ntedgi/${props.name}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
                     const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                     setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                    setClickUrl(html_url)
+
                 })
-        }, [props.name])
-    setClickUrl(state.html_url)
+        }, [props])
     return (
         <div>
             <div className='project-line'>
