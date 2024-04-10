@@ -12,7 +12,7 @@
         tab-size: 4;
         font-feature-settings: normal;
         --tw-bg-opacity: 1;
-        font-family: Inter,-apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,sans-serif;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
         font-weight: 600;
         font-size: 15px;
         line-height: 2;
@@ -137,7 +137,7 @@
     tab-size: 4;
     font-feature-settings: normal;
     --tw-bg-opacity: 1;
-    font-family: Inter,-apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
     box-sizing: border-box;
     border: 0 solid #e5e7eb;
     --tw-border-spacing-x: 0;
@@ -161,7 +161,7 @@
     --tw-ring-inset: ;
     --tw-ring-offset-width: 0px;
     --tw-ring-offset-color: #fff;
-    --tw-ring-color: rgba(59,130,246,.5);
+    --tw-ring-color: rgba(59, 130, 246, .5);
     --tw-ring-offset-shadow: 0 0 #0000;
     --tw-ring-shadow: 0 0 #0000;
     --tw-shadow: 0 0 #0000;
@@ -235,5 +235,16 @@
         line-height: 28px;
         font-weight: 600;
         font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif
+    }
+
+    .item {
+        display: list-item;
+        list-style-type: circle;
+        list-style-position: inside;
+        margin: 8px;
+    }
+    .item-container{
+        display: flex;
+        margin-bottom: 24px;
     }
 }

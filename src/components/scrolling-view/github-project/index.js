@@ -3,6 +3,12 @@ import './github-project.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodeBranch, faStar } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons"
+import {
+    setItemInCache,
+    getItemFromCache,
+    has
+} from '../cache'
+
 function Wrap(props) {
     const { count, icon } = props;
     return (
@@ -15,19 +21,25 @@ function Wrap(props) {
 
 function Name(props) {
     const [state, setState] = useState({})
+    const genKey = (item) => `PROG_${item}`
+
     useEffect(
         () => {
             const { setClickUrl } = props;
-
-            fetch(`https://api.github.com/repos/ntedgi/${props.name}`)
+            const { name } = props;
+            const key = genKey(name)
+            if (has(key)) setState(getItemFromCache(key))
+            else{
+            fetch(`https://api.github.com/repos/ntedgi/${name}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                     setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                    setItemInCache(key,{ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                     setClickUrl(html_url)
 
                 })
+            }
         }, [props])
     return (
         <div>
@@ -77,14 +89,21 @@ function LanguageRepresentation(props) {
 
 function Languages(props) {
     const [state, setState] = useState({})
+    const genKey = (item) => `LANG_${item}`
+    const { name } = props;
     useEffect(
         () => {
-            fetch(`https://api.github.com/repos/ntedgi/${props.name}/languages`)
-                .then(res => res.json())
-                .then(data => {
-                    setState(data)
-                })
-        }, [props.name])
+            const key = genKey(name)
+            if (has(key)) setState(getItemFromCache(key))
+            else {
+                fetch(`https://api.github.com/repos/ntedgi/${name}/languages`)
+                    .then(res => res.json())
+                    .then(data => {
+                        setState(data)
+                        setItemInCache(key, data)
+                    })
+            }
+        }, [name])
 
     if (Object.keys(state).length > 0) {
         return (
@@ -92,7 +111,6 @@ function Languages(props) {
         )
     }
     return <div>No Languages</div>
-
 }
 
 export function GithubProject(props) {
