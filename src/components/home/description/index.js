@@ -1,11 +1,10 @@
 import React from 'react'
 import './description.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare, faTwitterSquare, faGithubSquare, faGitlab, faInstagramSquare, faDocker, faStackOverflow, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
 import MediaQuery from 'react-responsive'
 import profilePic from '../../../assets/31243793.jpeg';
-
+import SocialNetwork from '../../common/social-network'
 function ProfilePic() {
     return (
         <div className='avatar-border'>
@@ -13,13 +12,7 @@ function ProfilePic() {
         </div>
     )
 }
-function SocialNetwork(props) {
-    return <div className="social-network" onClick={() => {
-        window.open(props.uri, "_blank")
-    }}>
-        <span className='social-network-icon'><FontAwesomeIcon icon={props.icon} /></span>
-    </div>
-}
+
 
 function SocialNetworks() {
     return <div className="social-contacts">

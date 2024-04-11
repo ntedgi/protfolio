@@ -1,6 +1,9 @@
 import React from 'react'
 import './about.scss'
 import Description from '../description'
+import { faUnity } from "@fortawesome/free-brands-svg-icons"
+import SocialNetwork from '../../common/social-network'
+
 function JobTitleDiscriptons() {
     return (
         <div className='job-title-discriptopn-container'>
@@ -36,7 +39,10 @@ function Name() {
     return <h1 className='about-name'>Naor Tedgi</h1>
 }
 function JobTitle() {
-    return <h1 className='about-job-title'>Tech Lead and Individual Contributor at Unity</h1>
+    return <div className='job-title-container'>
+        <h1 className='about-job-title'>{"Tech Lead and Individual Contributor at Unity"}</h1>
+        <SocialNetwork icon={faUnity} title="Unity" uri="https://unity.com/" />
+    </div>
 }
 
 export default function About() {

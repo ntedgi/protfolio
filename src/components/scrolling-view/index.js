@@ -20,6 +20,7 @@ function ProjectsList() {
 
   return (
     <div className='projects' >
+      <SOFContainer/>
       <GithubProject name="node-efficientnet" npm={"https://www.npmjs.com/package/node-efficientnet"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
       <GithubProject name="infra-meetings" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
       <GithubProject name="kube-argocd-helm-workshop" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
@@ -30,7 +31,7 @@ function ProjectsList() {
       <GithubProject name="mocha-parallel-tests" npm={"https://www.npmjs.com/package/mocha9-parallel-tests"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
       <GithubProject name="data-stream-counter" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
       <GithubProject name="universal-sentence-encoder" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProjectPlaceHolder />
+      <GithubProjectPlaceHolder isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />/>
     </div>
   )
 }
@@ -68,7 +69,6 @@ export default function ScrollingView(props) {
 
   return (
     <div className="projects-container" ref={listRef} >
-      <SOFContainer/>
       <ProjectsList />
     </div>
   )
