@@ -47,7 +47,7 @@ function Name(props) {
                 <div className='s-project-name' onClick={() => { window.open(state.html_url, "_blank") }}>
                     {state.full_name && state.full_name.length > 0 && state.full_name.split('/')[1]}
                 </div>
-               
+
             </div>
             <div className='s-project-description'>
                 {state.description}
@@ -92,21 +92,20 @@ function Languages(props) {
     const [state, setState] = useState({})
     const genKey = (item) => `LANG_${item}`
     const { name, auther } = props;
-    const owner = auther || 'ntedgi'
 
     useEffect(
         () => {
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${owner}/${name}/languages`)
+                fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
                     .then(res => res.json())
                     .then(data => {
                         setState(data)
                         setItemInCache(key, data)
                     })
             }
-        }, [name])
+        }, [auther,name])
 
     if (Object.keys(state).length > 0) {
         return (
@@ -117,10 +116,16 @@ function Languages(props) {
 }
 
 export function GithubProject(props) {
+    const owner = props.auther || 'ntedgi'
+
     return (
-        <div className={`s-gh-project-container`}>
+        <div className={`s-gh-project-container`}
+            onClick={() => {
+                window.open(`https://github.com/${owner}/${props.name}`, "_blank")
+            }}
+        >
             <Languages name={props.name} />
-            <Name name={props.name} npm={props.npm} auther={props.auther}/>
+            <Name name={props.name} npm={props.npm} auther={props.auther} />
         </div>
 
     )

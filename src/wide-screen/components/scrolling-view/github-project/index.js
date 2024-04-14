@@ -25,19 +25,16 @@ function Name(props) {
 
     useEffect(
         () => {
-            const { setClickUrl } = props;
             const { name ,auther} = props;
-            let owner = auther || 'ntedgi'
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${owner}/${name}`)
+                fetch(`https://api.github.com/repos/${auther}/${name}`)
                     .then(res => res.json())
                     .then(data => {
                         const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                         setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                         setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                        setClickUrl(html_url)
                     })
             }
         }, [props])
@@ -91,21 +88,19 @@ function Languages(props) {
     const [state, setState] = useState({})
     const genKey = (item) => `LANG_${item}`
     const { name, auther } = props;
-    const owner = auther || 'ntedgi'
-
     useEffect(
         () => {
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${owner}/${name}/languages`)
+                fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
                     .then(res => res.json())
                     .then(data => {
                         setState(data)
                         setItemInCache(key, data)
                     })
             }
-        }, [name])
+        }, [name, auther ])
 
     if (Object.keys(state).length > 0) {
         return (
@@ -117,9 +112,9 @@ function Languages(props) {
 
 export function GithubProject(props) {
     const [isHovered, setIsHovered] = useState(false);
-    const [clickUrl, setClickUrl] = useState(false);
     const { isShadowed, onElementMouseEnter, onElementMouseLeave } = props;
     let shouldShadow = isHovered ? '' : isShadowed
+    const owner = props.auther || 'ntedgi'
     const handleMouseEnter = () => {
         setIsHovered(true);
         onElementMouseEnter()
@@ -134,10 +129,12 @@ export function GithubProject(props) {
         <div className={`gh-project-container ${isHovered ? 'hovered' : ''} ${shouldShadow ? 'shedowed' : ''}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onClick={() => { window.open(clickUrl, "_blank") }}
+            onClick={() => { 
+                window.open(`https://github.com/${owner}/${props.name}`, "_blank") 
+            }}
         >
-            <Languages name={props.name} />
-            <Name name={props.name} npm={props.npm} auther={props.auther} setClickUrl={setClickUrl} />
+            <Languages name={props.name} auther={owner} />
+            <Name name={props.name} npm={props.npm} auther={owner} />
         </div>
 
     )

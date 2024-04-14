@@ -1,23 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import SOFContainer from './sof'
+import React from 'react';
 import YouTubeContainer from './youtube'
 import { GithubProject } from './github-project'
 import './projects.scss'
 
-function GithubProjectPlaceHolder() {
-  return <div className='github-placeholder'>Design By....</div>
-}
 function ProjectsList() {
-  const [isShadowed, setIsShadowed] = useState(false);
-  const onElementMouseEnter = () => {
-    setIsShadowed(true);
-  };
-
-  const onElementMouseLeave = () => {
-    setIsShadowed(false);
-  };
-
-
   return (
     <div className='s-projects' >
       <GithubProject name="cld3-kotlin" />
