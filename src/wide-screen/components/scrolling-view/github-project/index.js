@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './github-project.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { DNA } from 'react-loader-spinner'
 import { faCodeBranch, faStar } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons"
 import {
@@ -26,7 +27,7 @@ function Name(props) {
 
     useEffect(
         () => {
-            const { name, auther } = props;
+            const { name, auther, setIsLoading } = props;
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
@@ -37,6 +38,9 @@ function Name(props) {
                         const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                         setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                         setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                        if (setIsLoading) {
+                            setIsLoading(false)
+                        }
                     })
             }
         }, [props])
@@ -108,12 +112,20 @@ function Languages(props) {
             <LanguageRepresentation languages={state} />
         )
     }
-    return <div>No Languages</div>
+    return <DNA
+        visible={true}
+        height="80"
+        width="80"
+        ariaLabel="dna-loading"
+        wrapperStyle={{}}
+        wrapperClass="dna-wrapper"
+    />
+
 }
 
 export function GithubProject(props) {
     const [isHovered, setIsHovered] = useState(false);
-    const { isShadowed, onElementMouseEnter, onElementMouseLeave } = props;
+    const { isShadowed, onElementMouseEnter, onElementMouseLeave, setIsLoading } = props;
     let shouldShadow = isHovered ? '' : isShadowed
     const owner = props.auther || 'ntedgi'
     const handleMouseEnter = () => {
@@ -135,7 +147,7 @@ export function GithubProject(props) {
             }}
         >
             <Languages name={props.name} auther={owner} />
-            <Name name={props.name} npm={props.npm} auther={owner} />
+            <Name name={props.name} npm={props.npm} auther={owner} setIsLoading={setIsLoading} />
         </div>
 
     )

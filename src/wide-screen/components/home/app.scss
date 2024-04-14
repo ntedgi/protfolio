@@ -48,33 +48,6 @@
 
 .scrolling-side {
   background-color: #151515;
+
   max-width: 70%;
-}
-
-// Responsive
-
-
-
-.container-small {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: #151515;
-  height: 100%;
-  align-items: center;
-}
-
-.static-side-small,
-.scrolling-side-small {
-  display: flex;
-  height: 100vh;
-}
-
-.static-side-small {
-  background-color: #151515;
-  padding: 44px;
-}
-
-.scrolling-side-small {
-  background-color: red;
 }

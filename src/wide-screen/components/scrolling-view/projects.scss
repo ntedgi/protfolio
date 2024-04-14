@@ -5,10 +5,11 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
     scrollbar-color: black transparent;
-    
+
     .projects {
         display: flex;
         flex-direction: column;
+        
     }
 
     .github-placeholder {

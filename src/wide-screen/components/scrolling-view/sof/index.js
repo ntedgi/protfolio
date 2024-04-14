@@ -90,6 +90,7 @@ export default function SOFContainer(props) {
             <SocialNetwork size="x-large" icon={faStackOverflow} title="StackOverflow" uri={`https://stackoverflow.com/users/4267015/naor-tedgi`} />
 
                 <div>
+            
                     <Reputation reputation={state.reputation} />
                     <Badges {...state.badge_counts} />
                 </div>
