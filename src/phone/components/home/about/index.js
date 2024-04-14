@@ -14,27 +14,7 @@ function JobTitleDiscriptons() {
     )
 }
 
-function Overviow() {
-    return <div className='job-title-discriptopn-container'>
-        <div className='jtd-text'>
-            <div className='item-container'>
-                <div className='item'>
-                    {`Software Ninjaneer `}
-                </div>
-                <div className='item'>
-                    {`Husband`}
-                </div>
-                <div className='item'>
-                    {`Father`}
-                </div>
-                <div className='item'>
-                    {`גולנצ'יק.`}
-                </div>
-            </div>
-        </div>
-    </div>
 
-}
 function Name() {
     return <h1 className='about-name'>Naor Tedgi</h1>
 }
@@ -55,7 +35,6 @@ export default function About() {
                 <JobTitleDiscriptons />
             </div>
             <div>
-                <Overviow />
                 <Description />
             </div>
         </div>

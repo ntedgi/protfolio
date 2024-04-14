@@ -1,33 +1,21 @@
-.gh-project-container.hovered {
-    margin-bottom: 0px;
-    margin-top: 0px;
-    transform: scale(1.1);
-}
-
-.project-line {
+.s-project-line {
     display: flex;
-    justify-content: space-between;
     margin-top: 8px;
 }
 
-.gh-project-container {
+.s-gh-project-container {
+    width: 100%;
     color: white;
     background-color: #f0f0f0;
-    -webkit-transition: 0.25s ease-in-out;
-    transition: 0.25s ease-in-out;
-    background-color: #f0f0f0;
-    transition: all 0.2ss ease;
     border-style: solid;
     border-width: 1px;
     border-color: rgba(0, 0, 0, .125);
-    height: 40%;
     background-color: #1F2022;
     flex-direction: column;
-    padding: 40px;
+    padding: 20px;
     margin: 4px;
-    /* Shadow properties */
 
-    .btn {
+    .s-btn {
         padding: 5px;
 
         &:hover {
@@ -35,37 +23,37 @@
         }
     }
 
-    .stats {
+    .s-stats {
         display: flex;
 
-        .star {
+        .s-star {
             font-size: 14px;
         }
     }
 
-    .wrapper {
+    .s-wrapper {
         display: flex;
         padding-right: 5px;
 
-        .count {
+        .s-count {
             margin-left: 5px;
         }
     }
 
-    .languages {
+    .s-languages {
         display: flex;
         font-size: 12px;
         font-weight: 800;
     }
 
-    .language {
+    .s-language {
         margin-right: 5px;
     }
 
-    .card-header {
+    .s-card-header {
         display: flex;
-        justify-content: space-between;
         cursor: pointer;
+        align-items: center;
         margin-top: 16px;
         color: #949495;
 
@@ -73,25 +61,26 @@
 
     }
 
-    .project-icon {
+    .s-project-icon {
         font-size: 40px;
         display: flex;
     }
 
-    .project-name {
-        font-size: 25px;
+    .s-project-name {
+        font-size: 18px;
         font-weight: 700;
         line-height: 1.5;
+        line-break: auto;
         margin-top: 8px;
-        max-width: 500px;
     }
-    .project-description{
+    .s-project-description{
         color: #949495;
+        max-width: 80%;
 
     }
 }
 
-.gh-project-container.shedowed {
+.s-gh-project-container.shedowed {
     background-color: #1B1B1C;
     color: #949495;
 }

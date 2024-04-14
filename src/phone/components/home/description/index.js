@@ -3,7 +3,7 @@ import './description.scss'
 import { faFacebookSquare, faTwitterSquare, faGithubSquare, faGitlab, faInstagramSquare, faDocker, faStackOverflow, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
 import MediaQuery from 'react-responsive'
-import profilePic from '../../../assets/31243793.jpeg';
+import profilePic from '../../../../assets/31243793.jpeg';
 import SocialNetwork from '../../common/social-network'
 function ProfilePic() {
     return (

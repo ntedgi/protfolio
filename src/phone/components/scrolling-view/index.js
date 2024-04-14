@@ -19,61 +19,26 @@ function ProjectsList() {
 
 
   return (
-    <div className='projects' >
-      <GithubProject name="cld3-kotlin" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="node-efficientnet" npm={"https://www.npmjs.com/package/node-efficientnet"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="kube-argocd-helm-workshop" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-
-      <div className='flex'>
-        <SOFContainer isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-        <YouTubeContainer isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      </div>
-      <GithubProject name="node" auther="nodejs" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="infra-meetings" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="NLP-HashTag-Parser" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="express-body-parser-error-handler" npm={"https://www.npmjs.com/package/express-body-parser-error-handler"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="albert-fine-tuning-squad-2.0" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="mocha-parallel-tests" npm={"https://www.npmjs.com/package/mocha9-parallel-tests"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="data-stream-counter" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProject name="universal-sentence-encoder" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
-      <GithubProjectPlaceHolder isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+    <div className='s-projects' >
+      <GithubProject name="cld3-kotlin" />
+      <GithubProject name="node-efficientnet" />
+      <GithubProject name="kube-argocd-helm-workshop" />
+      <YouTubeContainer />
+      <GithubProject name="node" auther="nodejs" />
+      <GithubProject name="infra-meetings" />
+      <GithubProject name="NLP-HashTag-Parser" />
+      <GithubProject name="express-body-parser-error-handler"  />
+      <GithubProject name="albert-fine-tuning-squad-2.0" />
+      <GithubProject name="mocha-parallel-tests"  />
+      <GithubProject name="data-stream-counter" />
+      <GithubProject name="universal-sentence-encoder" />
     </div>
   )
 }
 
-export default function ScrollingView(props) {
-  const { setListRef } = props;
-  const listRef = useRef(null);
-  useEffect(() => {
-
-    const handleKeyPress = (event) => {
-      const { keyCode } = event;
-      const list = listRef.current;
-      setListRef(listRef)
-
-      if (!list) return;
-
-      switch (keyCode) {
-        case 38:
-          list.scrollTop -= 50;
-          break;
-        case 40:
-          list.scrollTop += 50;
-          break;
-        default:
-          break;
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyPress);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [setListRef]);
-
+export default function ScrollingView() {
   return (
-    <div className="projects-container" ref={listRef} >
+    <div className="s-projects-container"  >
       <ProjectsList />
     </div>
   )

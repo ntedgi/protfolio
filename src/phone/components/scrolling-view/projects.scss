@@ -1,23 +1,17 @@
-.projects-container {
-    width: 100%;
+.s-projects-container {
+    padding-top: 20px;
     height: 100%;
-    padding: 88px;
     overflow-y: scroll;
     scroll-behavior: smooth;
     scrollbar-color: black transparent;
     
-    .projects {
+    .s-projects {
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
 
-    .github-placeholder {
-        padding: 100px
+    .s-github-placeholder {
+        padding: 10px
     }
-}
-
-.flex {
-    display: flex;
-    justify-items: center;
-    justify-content: space-between;
 }

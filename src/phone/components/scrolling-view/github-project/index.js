@@ -26,7 +26,7 @@ function Name(props) {
     useEffect(
         () => {
             const { setClickUrl } = props;
-            const { name ,auther} = props;
+            const { name, auther } = props;
             let owner = auther || 'ntedgi'
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
@@ -43,28 +43,29 @@ function Name(props) {
         }, [props])
     return (
         <div>
-            <div className='project-line'>
-                <div className='project-name' onClick={() => { window.open(state.html_url, "_blank") }}>
+            <div className='s-project-line'>
+                <div className='s-project-name' onClick={() => { window.open(state.html_url, "_blank") }}>
                     {state.full_name && state.full_name.length > 0 && state.full_name.split('/')[1]}
                 </div>
-                <div className='project-icon'>
-                    <div className='btn' onClick={() => { window.open(state.html_url, "_blank") }}>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    {props.npm && <div className='btn npm' onClick={() => { window.open(props.npm, "_blank") }}>
-                        <FontAwesomeIcon icon={faNpm} />
-                    </div>}
-                </div>
+               
             </div>
-            <div className='project-description'>
+            <div className='s-project-description'>
                 {state.description}
             </div>
-            <div className='card-header'>
-                <div className='stats'>
+            <div className='s-card-header'>
+                <div className='s-stats'>
                     <Wrap count={state.forks_count} icon={faCodeBranch} />
-                    <div className='star'>
+                    <div className='s-star'>
                         <Wrap count={state.stargazers_count} icon={faStar} />
                     </div>
+                </div>
+                <div className='s-project-icon'>
+                    <div className='s-btn' onClick={() => { window.open(state.html_url, "_blank") }}>
+                        <FontAwesomeIcon icon={faGithub} />
+                    </div>
+                    {props.npm && <div className='s-btn s-npm' onClick={() => { window.open(props.npm, "_blank") }}>
+                        <FontAwesomeIcon icon={faNpm} />
+                    </div>}
                 </div>
 
 
@@ -81,8 +82,8 @@ function LanguageRepresentation(props) {
         percentage[key] = languages[key] / total * 100;
     })
     return (
-        <div className='languages'>
-            {Object.keys(percentage).map(key => <div className='language' key={key}>{`${key.toLocaleUpperCase()}`}</div>)}
+        <div className='s-languages'>
+            {Object.keys(percentage).slice(0, 5).map(key => <div className='s-language' key={key}>{`${key.toLocaleUpperCase()}`}</div>)}
         </div>
     )
 }
@@ -116,28 +117,10 @@ function Languages(props) {
 }
 
 export function GithubProject(props) {
-    const [isHovered, setIsHovered] = useState(false);
-    const [clickUrl, setClickUrl] = useState(false);
-    const { isShadowed, onElementMouseEnter, onElementMouseLeave } = props;
-    let shouldShadow = isHovered ? '' : isShadowed
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-        onElementMouseEnter()
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-        onElementMouseLeave()
-    };
-
     return (
-        <div className={`gh-project-container ${isHovered ? 'hovered' : ''} ${shouldShadow ? 'shedowed' : ''}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => { window.open(clickUrl, "_blank") }}
-        >
+        <div className={`s-gh-project-container`}>
             <Languages name={props.name} />
-            <Name name={props.name} npm={props.npm} auther={props.auther} setClickUrl={setClickUrl} />
+            <Name name={props.name} npm={props.npm} auther={props.auther}/>
         </div>
 
     )

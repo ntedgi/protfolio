@@ -1,8 +1,9 @@
 import React from "react";
 
-import Home from './components/home'
+import ResponsiveAPP from './phone/components/home'
+import Home from './wide-screen/components/home'
+
 import MediaQuery from 'react-responsive'
-import ResponsiveAPP from './phone'
 const AppWrapper = () => {
   return (
     <div className="app">
