@@ -6,7 +6,8 @@ import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons"
 import {
     setItemInCache,
     getItemFromCache,
-    has
+    has,
+    validateData
 } from '../cache'
 
 function Wrap(props) {
@@ -25,13 +26,14 @@ function Name(props) {
 
     useEffect(
         () => {
-            const { name ,auther} = props;
+            const { name, auther } = props;
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
                 fetch(`https://api.github.com/repos/${auther}/${name}`)
                     .then(res => res.json())
                     .then(data => {
+                        data = validateData(key, data)
                         const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                         setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                         setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
@@ -96,11 +98,12 @@ function Languages(props) {
                 fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
                     .then(res => res.json())
                     .then(data => {
+                        data = validateData(key, data)
                         setState(data)
                         setItemInCache(key, data)
                     })
             }
-        }, [name, auther ])
+        }, [name, auther])
 
     if (Object.keys(state).length > 0) {
         return (
@@ -129,8 +132,8 @@ export function GithubProject(props) {
         <div className={`gh-project-container ${isHovered ? 'hovered' : ''} ${shouldShadow ? 'shedowed' : ''}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onClick={() => { 
-                window.open(`https://github.com/${owner}/${props.name}`, "_blank") 
+            onClick={() => {
+                window.open(`https://github.com/${owner}/${props.name}`, "_blank")
             }}
         >
             <Languages name={props.name} auther={owner} />
