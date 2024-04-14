@@ -16,7 +16,7 @@ function JobTitleDiscriptons() {
 
 
 function Name() {
-    return <h1 className='about-name'>Naor Tedgi</h1>
+    return <h1 className='s-about-name'>Naor Tedgi</h1>
 }
 function JobTitle() {
     return <div className='job-title-container'>
