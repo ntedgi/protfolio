@@ -2,13 +2,12 @@ import React from 'react'
 import './description.scss'
 import { faFacebookSquare, faTwitterSquare, faGithubSquare, faGitlab, faInstagramSquare, faDocker, faStackOverflow, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
-import MediaQuery from 'react-responsive'
 import profilePic from '../../../../assets/31243793.jpeg';
 import SocialNetwork from '../../common/social-network'
 function ProfilePic() {
     return (
         <div className='avatar-border'>
-            <img className="avatar" src={profilePic} alt='avatar' width="20px"/>
+            <img className="avatar" src={profilePic} alt='avatar' width="20px" />
         </div>
     )
 }
@@ -40,11 +39,8 @@ function Contact() {
 export default function Description() {
     return (
         <div className='description'>
-            <MediaQuery minWidth={1224}>
-                <ProfilePic/>
-                <Contact />
-            </MediaQuery>
-
+            <ProfilePic />
+            <Contact />
         </div>
     )
 }

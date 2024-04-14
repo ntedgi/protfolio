@@ -65,8 +65,6 @@ function Name(props) {
                         <Wrap count={state.stargazers_count} icon={faStar} />
                     </div>
                 </div>
-
-
             </div>
         </div>)
 
