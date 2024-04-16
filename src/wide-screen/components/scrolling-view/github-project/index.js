@@ -24,6 +24,7 @@ function Wrap(props) {
 function Name(props) {
     const [state, setState] = useState({})
     const genKey = (item) => `PROG_${item}`
+    const { auther } = props;
 
     useEffect(
         () => {
@@ -44,11 +45,13 @@ function Name(props) {
                     })
             }
         }, [props])
+    const projectName = () =>{return auther!=="ntedgi" ? `${auther}/${state.full_name.split('/')[1]}` : state.full_name.split('/')[1]}
+
     return (
         <div>
             <div className='project-line'>
                 <div className='project-name' onClick={() => { window.open(state.html_url, "_blank") }}>
-                    {state.full_name && state.full_name.length > 0 && state.full_name.split('/')[1]}
+                    {state.full_name && state.full_name.length > 0 && projectName()}
                 </div>
                 <div className='project-icon'>
                     <div className='btn' onClick={() => { window.open(state.html_url, "_blank") }}>
