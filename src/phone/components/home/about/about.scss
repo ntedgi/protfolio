@@ -14,7 +14,6 @@
         --tw-bg-opacity: 1;
         font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
         font-weight: 600;
-        font-size: 15px;
         line-height: 2;
         box-sizing: border-box;
         border: 0 solid #e5e7eb;
@@ -186,21 +185,20 @@
     margin: 0;
     --tw-text-opacity: 1;
     color: rgb(255 255 255/var(--tw-text-opacity));
-    font-size: 64px;
+    font-size:48px;
     line-height: 1;
 }
 
-.job-title-discriptopn-container {
-    font-size: 12px;
+.p-job-title-discriptopn-container {
+    font-size: 14px;
     margin-top: 32px;
-
+    padding-bottom: 20px;
     .jtd-text {
         -webkit-text-size-adjust: 100%;
         tab-size: 4;
         font-feature-settings: normal;
         --tw-bg-opacity: 1;
         font-family: Helvetica;
-        font-size: 16px;
         --tw-text-opacity: 1;
         color: rgb(148 148 149/var(--tw-text-opacity));
         box-sizing: border-box;

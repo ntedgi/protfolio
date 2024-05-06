@@ -6,7 +6,7 @@ import SocialNetwork from '../../common/social-network'
 
 function JobTitleDiscriptons() {
     return (
-        <div className='job-title-discriptopn-container'>
+        <div className='p-job-title-discriptopn-container'>
             <div className='jtd-text'>
                 {`i enjoy developing tools and software and contribute to open-source projects. I like being challenged and tackling problems, learning new things, and exploring new areas. I am a team player and enjoy cooperating with others and learning from them. A great team with professional, enthusiastic, and cooperating members is very important to me.`}
             </div>

@@ -4,7 +4,6 @@
 }
 
 .s-gh-project-container {
-    width: 100%;
     color: white;
     background-color: #f0f0f0;
     border-style: solid;
@@ -12,7 +11,7 @@
     border-color: rgba(0, 0, 0, .125);
     background-color: #1F2022;
     flex-direction: column;
-    padding: 20px;
+    padding: 30px;
     margin: 4px;
 
     .s-btn {
@@ -25,18 +24,17 @@
 
     .s-stats {
         display: flex;
-
         .s-star {
             font-size: 14px;
+            margin-left: 12px;
         }
     }
 
     .s-wrapper {
         display: flex;
-        padding-right: 5px;
-
+        font-size: 10px;
         .s-count {
-            margin-left: 5px;
+            margin-left: 6px;
         }
     }
 
@@ -52,35 +50,27 @@
 
     .s-card-header {
         display: flex;
+        max-width: 200px;
+        justify-content: space-between;
         cursor: pointer;
         align-items: center;
         margin-top: 16px;
         color: #949495;
-
-
-
     }
-
     .s-project-icon {
         font-size: 40px;
         display: flex;
     }
-
     .s-project-name {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 24px;
+        font-weight: 800;
         line-height: 1.5;
         line-break: auto;
-        margin-top: 8px;
     }
     .s-project-description{
         color: #949495;
         max-width: 80%;
+        font-size: 14px;
 
     }
-}
-
-.s-gh-project-container.shedowed {
-    background-color: #1B1B1C;
-    color: #949495;
 }

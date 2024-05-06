@@ -45,7 +45,7 @@ function Name(props) {
                     })
             }
         }, [props])
-    const projectName = () =>{return auther!=="ntedgi" ? `${auther}/${state.full_name.split('/')[1]}` : state.full_name.split('/')[1]}
+    const projectName = () => { return auther !== "ntedgi" ? `${auther}/${state.full_name.split('/')[1]}` : state.full_name.split('/')[1] }
 
     return (
         <div>
@@ -110,7 +110,8 @@ function Languages(props) {
             }
         }, [name, auther])
 
-    if (Object.keys(state).length > 0) {
+    if (state && Object.keys(state).length > 0) {
+
         return (
             <LanguageRepresentation languages={state} />
         )
@@ -155,3 +156,4 @@ export function GithubProject(props) {
 
     )
 }
+

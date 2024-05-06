@@ -12,9 +12,9 @@ import {
 function Wrap(props) {
     const { count, icon } = props;
     return (
-        < div className='wrapper' >
+        < div className='s-wrapper' >
             <FontAwesomeIcon icon={icon} />
-            <div className='count'>{count}</div>
+            <div className='s-count'>{count}</div>
         </div >)
 }
 
@@ -59,16 +59,6 @@ function Name(props) {
                         <Wrap count={state.stargazers_count} icon={faStar} />
                     </div>
                 </div>
-                <div className='s-project-icon'>
-                    <div className='s-btn' onClick={() => { window.open(state.html_url, "_blank") }}>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    {props.npm && <div className='s-btn s-npm' onClick={() => { window.open(props.npm, "_blank") }}>
-                        <FontAwesomeIcon icon={faNpm} />
-                    </div>}
-                </div>
-
-
             </div>
         </div>)
 

@@ -1,37 +1,35 @@
 import React from 'react'
 import './description.scss'
-import { faFacebookSquare, faTwitterSquare, faGithubSquare, faGitlab, faInstagramSquare, faDocker, faStackOverflow, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
-import MediaQuery from 'react-responsive'
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import profilePic from '../../../../assets/31243793.jpeg';
 import SocialNetwork from '../../common/social-network'
 function ProfilePic() {
     return (
-        <div className='avatar-border'>
-            <img className="avatar" src={profilePic} alt='avatar' width="20px"/>
+        <div className='s-avatar-border'>
+            <img className="s-avatar" src={profilePic} alt='avatar' width="20px" />
         </div>
     )
 }
 
 
 function SocialNetworks() {
-    return <div className="social-contacts">
-        <SocialNetwork icon={faStackOverflow} title="StackOverflow" uri={`https://stackoverflow.com/users/4267015/naor-tedgi`} />
-        <SocialNetwork icon={faGithubSquare} title="Github" uri={"https://github.com/ntedgi"} />
-        <SocialNetwork icon={faLinkedinIn} title="Linkedin" uri={`https://www.linkedin.com/in/naor-tedgi-11314284/`} />
-        <SocialNetwork icon={faGitlab} title="GitLab" uri={"https://gitlab.com/Naor-Tedgi"} />
-        <SocialNetwork icon={faDocker} title="DockerHub" uri={"https://hub.docker.com/u/naortedgi"} />
-        <SocialNetwork icon={faFacebookSquare} title="Facebook" uri={"https://www.facebook.com/NaorTedgi2205/"} />
-        <SocialNetwork icon={faTwitterSquare} title="Twitter" uri={"https://twitter.com/naor_tedgi"} />
-        <SocialNetwork icon={faInstagramSquare} title="Instagram" uri={"https://www.instagram.com/naortedgi/?hl=en"} />
-        <SocialNetwork icon={faEnvelopeSquare} title="Email" uri={"mailto:naor.tedgi@gmail.com"} />
+    return <div className="s-social-contacts" >
+        <div className='s-scocial-phone-container' onClick={() => { window.open("https://github.com/ntedgi", "_blank")}}>
+            <SocialNetwork icon={faGithub} title="Github" uri={"https://github.com/ntedgi"} />
+            <span className='s-scocial-phone-container-text' >Twitter</span>
+
+        </div>
+        <div className='s-scocial-phone-container' onClick={() => {window.open("https://www.linkedin.com/in/naor-tedgi-11314284", "_blank")}}>
+            <SocialNetwork icon={faLinkedinIn} title="Linkedin" uri={`https://www.linkedin.com/in/naor-tedgi-11314284/`} />
+            <span className='s-scocial-phone-container-text' >Linkedin</span>
+        </div>
     </div>
 
 }
 
 function Contact() {
     return (
-        <div className='contact'>
+        <div className='s-contact' >
             <SocialNetworks />
         </div>)
 
@@ -39,12 +37,9 @@ function Contact() {
 
 export default function Description() {
     return (
-        <div className='description'>
-            <MediaQuery minWidth={1224}>
-                <ProfilePic/>
-                <Contact />
-            </MediaQuery>
-
+        <div className='s-description'>
+            <ProfilePic />
+            <Contact />
         </div>
     )
 }

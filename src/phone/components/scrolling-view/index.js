@@ -13,9 +13,9 @@ function ProjectsList() {
       <GithubProject name="node" auther="nodejs" />
       <GithubProject name="infra-meetings" />
       <GithubProject name="NLP-HashTag-Parser" />
-      <GithubProject name="express-body-parser-error-handler"  />
+      <GithubProject name="express-body-parser-error-handler" />
       <GithubProject name="albert-fine-tuning-squad-2.0" />
-      <GithubProject name="mocha-parallel-tests"  />
+      <GithubProject name="mocha-parallel-tests" />
       <GithubProject name="data-stream-counter" />
       <GithubProject name="universal-sentence-encoder" />
     </div>
@@ -24,8 +24,11 @@ function ProjectsList() {
 
 export default function ScrollingView() {
   return (
-    <div className="s-projects-container"  >
-      <ProjectsList />
+    <div>
+    <span className='s-projects-container-header'>PROJECTS</span>
+      <div className="s-projects-container"  >
+        <ProjectsList />
+      </div>
     </div>
   )
 }

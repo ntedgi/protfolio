@@ -5,7 +5,7 @@ import { GithubProject } from './github-project'
 import './projects.scss'
 
 function GithubProjectPlaceHolder() {
-  return <div className='github-placeholder'>Design By....</div>
+  return <div className='github-placeholder'>.....</div>
 }
 function ProjectsList() {
   const [isShadowed, setIsShadowed] = useState(false);

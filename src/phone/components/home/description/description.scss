@@ -1,37 +1,38 @@
-.description {
+.s-description {
     display: flex;
     align-items: center;
+    margin-bottom: 40px;
 }
 
-.contact {
+.s-contact {
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-.social-contacts {
+.s-social-contacts {
     display: flex;
     flex-direction: row;
     color: white;
 }
 
-.header {
+.s-header {
     font-weight: 700;
     font-size: 28px;
     color: #394145;
     padding-bottom: 20px;
 }
 
-.social-network-title {
+.s-social-network-title {
     font-weight: 500;
 }
 
-.social-network-icon {
+.s-social-network-icon {
     font-size: 20px;
     padding-right: 15px;
 }
 
-.social-network {
+.s-social-network {
     margin-left: 8px;
 
     &:hover {
@@ -40,19 +41,30 @@
 
     cursor: pointer;
 }
-.avatar {
+.s-avatar {
     vertical-align: middle;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border-style: solid;
     border-width: 1px;
     border-color: black;
 }
-.text-area {
+.s-text-area {
     font-size: 20px;
     font-weight: 500;
     line-height: 1.5;
     padding-bottom: 20px;
     font-family: merriweather, serif;
+}
+
+.s-scocial-phone-container{
+    display: flex;
+    align-items: center;
+    margin-right:20px ;
+}
+
+.s-scocial-phone-container-text{
+    font-size: 14px;
+    font-weight: 800;
 }

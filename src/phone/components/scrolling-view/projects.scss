@@ -8,10 +8,23 @@
     .s-projects {
         display: flex;
         flex-direction: column;
-        width: 100%;
     }
 
     .s-github-placeholder {
         padding: 10px
     }
+   
+}
+
+.s-projects-container-header{
+    font-family: Helvetica;
+    padding-bottom: 24px;
+    tab-size: 4;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255/var(--tw-text-opacity));
 }
