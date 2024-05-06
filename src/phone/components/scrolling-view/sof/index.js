@@ -55,6 +55,7 @@ export default function SOFContainer(props) {
                 setState(getItemFromCache(cacheKey))
             }
             else {
+                try {
                 fetch(URI)
                     .then(res => res.json())
                     .then(data => {
@@ -62,6 +63,9 @@ export default function SOFContainer(props) {
                         setState(profile)
                         setItemInCache(cacheKey, profile)
                     })
+                }
+                catch (e) {
+                }
             }
         }, [cacheKey])
 

@@ -37,7 +37,7 @@ function Reputation(props) {
     return <div className='reputation-container'>
         <div className='title'>REPUTATION</div>
         <div className='reputation-count'>{reputation}</div>
-        <SOFChart/>
+        <SOFChart />
 
     </div>
 }
@@ -55,13 +55,16 @@ export default function SOFContainer(props) {
                 setState(getItemFromCache(cacheKey))
             }
             else {
-                fetch(URI)
-                    .then(res => res.json())
-                    .then(data => {
-                        const profile = data.items[0];
-                        setState(profile)
-                        setItemInCache(cacheKey, profile)
-                    })
+                try {
+                    fetch(URI)
+                        .then(res => res.json())
+                        .then(data => {
+                            const profile = data.items[0];
+                            setState(profile)
+                            setItemInCache(cacheKey, profile)
+                        })
+                } catch (e) {
+                }
             }
         }, [cacheKey])
 
@@ -87,10 +90,10 @@ export default function SOFContainer(props) {
             onClick={() => { window.open(clickUrl, "_blank") }}
         >
             <div className='sof-internal'>
-            <SocialNetwork size="x-large" icon={faStackOverflow} title="StackOverflow" uri={`https://stackoverflow.com/users/4267015/naor-tedgi`} />
+                <SocialNetwork size="x-large" icon={faStackOverflow} title="StackOverflow" uri={`https://stackoverflow.com/users/4267015/naor-tedgi`} />
 
                 <div>
-            
+
                     <Reputation reputation={state.reputation} />
                     <Badges {...state.badge_counts} />
                 </div>

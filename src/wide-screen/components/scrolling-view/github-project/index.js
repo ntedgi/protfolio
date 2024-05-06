@@ -32,17 +32,21 @@ function Name(props) {
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${auther}/${name}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        data = validateData(key, data)
-                        const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
-                        setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                        setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                        if (setIsLoading) {
-                            setIsLoading(false)
-                        }
-                    })
+                try {
+                    fetch(`https://api.github.com/repos/${auther}/${name}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            data = validateData(key, data)
+                            const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
+                            setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                            setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                            if (setIsLoading) {
+                                setIsLoading(false)
+                            }
+                        })
+                }
+                catch (e) {
+                }
             }
         }, [props])
     const projectName = () => { return auther !== "ntedgi" ? `${auther}/${state.full_name.split('/')[1]}` : state.full_name.split('/')[1] }
@@ -103,13 +107,16 @@ function Languages(props) {
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
-                    .then(res => res.json())
-                    .then(data => {
-                        data = validateData(key, data)
-                        setState(data)
-                        setItemInCache(key, data)
-                    })
+                try {
+                    fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
+                        .then(res => res.json())
+                        .then(data => {
+                            data = validateData(key, data)
+                            setState(data)
+                            setItemInCache(key, data)
+                        })
+                } catch (e) {
+                }
             }
         }, [props])
 

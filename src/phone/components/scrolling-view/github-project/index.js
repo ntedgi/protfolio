@@ -30,14 +30,17 @@ function Name(props) {
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${owner}/${name}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
-                        setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                        setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                        setClickUrl(html_url)
-                    })
+                try {
+                    fetch(`https://api.github.com/repos/${owner}/${name}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
+                            setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                            setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                            setClickUrl(html_url)
+                        })
+                } catch (e) {
+                }
             }
         }, [props])
     return (
@@ -87,14 +90,18 @@ function Languages(props) {
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
-                fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
-                    .then(res => res.json())
-                    .then(data => {
-                        setState(data)
-                        setItemInCache(key, data)
-                    })
+                try {
+                    fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
+                        .then(res => res.json())
+                        .then(data => {
+                            setState(data)
+                            setItemInCache(key, data)
+                        })
+                }
+                catch (e) {
+                }
             }
-        }, [auther,name])
+        }, [auther, name])
 
     if (Object.keys(state).length > 0) {
         return (
