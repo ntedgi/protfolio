@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './github-project.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { DNA } from 'react-loader-spinner'
 import { faCodeBranch, faStar } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons"
 import {
@@ -22,9 +21,11 @@ function Wrap(props) {
 
 
 function Name(props) {
-    const [state, setState] = useState({})
     const genKey = (item) => `PROG_${item}`
-    const { auther } = props;
+
+    const { auther,name } = props;
+    const [state, setState] = useState(getItemFromCache(genKey(name)))
+
 
     useEffect(
         () => {
@@ -92,9 +93,9 @@ function LanguageRepresentation(props) {
 }
 
 function Languages(props) {
-    const [state, setState] = useState({})
     const genKey = (item) => `LANG_${item}`
     const { name, auther } = props;
+    const [state, setState] = useState(getItemFromCache(genKey(name)))
     useEffect(
         () => {
             const key = genKey(name)
@@ -111,19 +112,10 @@ function Languages(props) {
         }, [name, auther])
 
     if (state && Object.keys(state).length > 0) {
-
         return (
             <LanguageRepresentation languages={state} />
         )
     }
-    return <DNA
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="dna-loading"
-        wrapperStyle={{}}
-        wrapperClass="dna-wrapper"
-    />
 
 }
 
