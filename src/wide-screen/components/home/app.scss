@@ -6,7 +6,6 @@
   overflow: hidden;
 }
 
-// /* YourComponent.css */
 .container {
   position: relative;
 }
@@ -17,21 +16,16 @@
   position: absolute;
   width: 100%;
   background: rgba(0, 0, 0, 0.1);
-  /* Shadow color */
 }
 
 .container::before {
   top: -10px;
-  /* Position the shadow above the container */
   box-shadow: 0px 4px 20px 2px rgba(0, 0, 0, 0.8);
-  /* Shadow properties */
 }
 
 .container::after {
   bottom: -10px;
-  /* Position the shadow below the container */
   box-shadow: 0px -4px 20px 2px rgba(0, 0, 0, 0.8);
-  /* Shadow properties */
 }
 
 .static-side,

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './github-project.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodeBranch, faStar } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons"
 import {
     setItemInCache,
     getItemFromCache,
