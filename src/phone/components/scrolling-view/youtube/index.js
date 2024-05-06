@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './youtube.scss'
 import SocialNetwork from '../../common/social-network'
 
-import { faYoutubeSquare, faYoutube } from "@fortawesome/free-brands-svg-icons"
+import {  faYoutube } from "@fortawesome/free-brands-svg-icons"
 
 export default function YouTubeContainer(props) {
     const [isHovered, setIsHovered] = useState(false);
