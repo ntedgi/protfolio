@@ -22,8 +22,7 @@ function Wrap(props) {
 
 function Name(props) {
     const genKey = (item) => `PROG_${item}`
-
-    const { auther,name } = props;
+    const { auther, name } = props;
     const [state, setState] = useState(getItemFromCache(genKey(name)))
 
 
@@ -94,10 +93,11 @@ function LanguageRepresentation(props) {
 
 function Languages(props) {
     const genKey = (item) => `LANG_${item}`
-    const { name, auther } = props;
+    const { name } = props;
     const [state, setState] = useState(getItemFromCache(genKey(name)))
     useEffect(
         () => {
+            const { name, auther } = props;
             const key = genKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
@@ -109,7 +109,7 @@ function Languages(props) {
                         setItemInCache(key, data)
                     })
             }
-        }, [name, auther])
+        }, [props])
 
     if (state && Object.keys(state).length > 0) {
         return (
