@@ -16,7 +16,7 @@ function setItemInCache(key, value) {
 }
 function has(key) {
     const item = localStorage.getItem(key)
-    return item!=='undefined' && Object.keys(item).length > 0
+    return !!item && Object.keys(item).length > 0
 }
 function getItemFromCache(key) {
     try {
