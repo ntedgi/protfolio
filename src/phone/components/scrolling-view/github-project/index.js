@@ -5,8 +5,13 @@ import { faCodeBranch, faStar } from '@fortawesome/free-solid-svg-icons'
 import {
     setItemInCache,
     getItemFromCache,
-    has
-} from '../cache'
+    has,
+    validateData
+} from '../../../../common/cache'
+import {
+    GetRepoLanguages, getCacheLangKey,
+    getCacheProgKey, GetRepoDetails
+} from '../../../../common/github-client'
 
 function Wrap(props) {
     const { count, icon } = props;
@@ -19,21 +24,20 @@ function Wrap(props) {
 
 
 function Name(props) {
-    const [state, setState] = useState({})
-    const genKey = (item) => `PROG_${item}`
+    const [state, setState] = useState(getItemFromCache(getCacheProgKey(props.name)))
 
     useEffect(
         () => {
             const { setClickUrl } = props;
             const { name, auther } = props;
             let owner = auther || 'ntedgi'
-            const key = genKey(name)
+            const key = getCacheProgKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
                 try {
-                    fetch(`https://api.github.com/repos/${owner}/${name}`)
-                        .then(res => res.json())
+                    GetRepoDetails(owner, name)
                         .then(data => {
+                            data = validateData(key, data)
                             const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
                             setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
                             setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
@@ -43,26 +47,29 @@ function Name(props) {
                 }
             }
         }, [props])
-    return (
-        <div>
-            <div className='s-project-line'>
-                <div className='s-project-name' onClick={() => { window.open(state.html_url, "_blank") }}>
-                    {state.full_name && state.full_name.length > 0 && state.full_name.split('/')[1]}
-                </div>
+    if (state && Object.keys(state).length > 0)
+        return (
+            <div>
+                <div className='s-project-line'>
+                    <div className='s-project-name' onClick={() => { window.open(state.html_url, "_blank") }}>
+                        {state.full_name && state.full_name.length > 0 && state.full_name.split('/')[1]}
+                    </div>
 
-            </div>
-            <div className='s-project-description'>
-                {state.description}
-            </div>
-            <div className='s-card-header'>
-                <div className='s-stats'>
-                    <Wrap count={state.forks_count} icon={faCodeBranch} />
-                    <div className='s-star'>
-                        <Wrap count={state.stargazers_count} icon={faStar} />
+                </div>
+                <div className='s-project-description'>
+                    {state.description}
+                </div>
+                <div className='s-card-header'>
+                    <div className='s-stats'>
+                        <Wrap count={state.forks_count} icon={faCodeBranch} />
+                        <div className='s-star'>
+                            <Wrap count={state.stargazers_count} icon={faStar} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>)
+            </div>)
+
+    return <div />
 
 }
 
@@ -81,19 +88,18 @@ function LanguageRepresentation(props) {
 }
 
 function Languages(props) {
-    const [state, setState] = useState({})
-    const genKey = (item) => `LANG_${item}`
     const { name, auther } = props;
+    const [state, setState] = useState(getItemFromCache(getCacheLangKey(name)))
 
     useEffect(
         () => {
-            const key = genKey(name)
+            const key = getCacheLangKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
                 try {
-                    fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
-                        .then(res => res.json())
+                    GetRepoLanguages(auther, name)
                         .then(data => {
+                            data = validateData(key, data)
                             setState(data)
                             setItemInCache(key, data)
                         })
@@ -103,7 +109,7 @@ function Languages(props) {
             }
         }, [auther, name])
 
-    if (Object.keys(state).length > 0) {
+    if (state && Object.keys(state).length > 0) {
         return (
             <LanguageRepresentation languages={state} />
         )

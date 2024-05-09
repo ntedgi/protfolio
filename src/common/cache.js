@@ -1,4 +1,4 @@
-import data from '../../../../assets/cache.json'
+import {data} from './store'
 
 function validateData(key, value) {
     if (!value ||

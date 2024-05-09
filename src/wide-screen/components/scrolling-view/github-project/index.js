@@ -8,7 +8,13 @@ import {
     getItemFromCache,
     has,
     validateData
-} from '../cache'
+} from '../../../../common/cache'
+import {
+    GetRepoLanguages, getCacheLangKey,
+    getCacheProgKey, GetRepoDetails
+} from '../../../../common/github-client'
+
+
 
 function Wrap(props) {
     const { count, icon } = props;
@@ -21,29 +27,26 @@ function Wrap(props) {
 
 
 function Name(props) {
-    const genKey = (item) => `PROG_${item}`
     const { auther, name } = props;
-    const [state, setState] = useState(getItemFromCache(genKey(name)))
+    const [state, setState] = useState(getItemFromCache(getCacheProgKey(name)))
 
 
     useEffect(
         () => {
             const { name, auther, setIsLoading } = props;
-            const key = genKey(name)
+            const key = getCacheProgKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
                 try {
-                    fetch(`https://api.github.com/repos/${auther}/${name}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            data = validateData(key, data)
-                            const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
-                            setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                            setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
-                            if (setIsLoading) {
-                                setIsLoading(false)
-                            }
-                        })
+                    GetRepoDetails(auther, name).then(data => {
+                        data = validateData(key, data)
+                        const { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url } = data
+                        setState({ stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                        setItemInCache(key, { stargazers_count, watchers_count, forks_count, description, full_name, license, topics, html_url })
+                        if (setIsLoading) {
+                            setIsLoading(false)
+                        }
+                    })
                 }
                 catch (e) {
                 }
@@ -98,23 +101,20 @@ function LanguageRepresentation(props) {
 }
 
 function Languages(props) {
-    const genKey = (item) => `LANG_${item}`
     const { name } = props;
-    const [state, setState] = useState(getItemFromCache(genKey(name)))
+    const [state, setState] = useState(getItemFromCache(getCacheLangKey(name)))
     useEffect(
         () => {
             const { name, auther } = props;
-            const key = genKey(name)
+            const key = getCacheLangKey(name)
             if (has(key)) setState(getItemFromCache(key))
             else {
                 try {
-                    fetch(`https://api.github.com/repos/${auther}/${name}/languages`)
-                        .then(res => res.json())
-                        .then(data => {
-                            data = validateData(key, data)
-                            setState(data)
-                            setItemInCache(key, data)
-                        })
+                    GetRepoLanguages(auther, name).then(data => {
+                        data = validateData(key, data)
+                        setState(data)
+                        setItemInCache(key, data)
+                    })
                 } catch (e) {
                 }
             }

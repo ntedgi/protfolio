@@ -4,7 +4,7 @@ import {
     setItemInCache,
     getItemFromCache,
     has
-} from '../cache'
+} from '../../../../common/cache'
 import SocialNetwork from '../../common/social-network'
 
 import { faStackOverflow } from "@fortawesome/free-brands-svg-icons"

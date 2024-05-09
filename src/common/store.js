@@ -1,4 +1,4 @@
-{
+export const data = {
     "LANG_express-body-parser-error-handler": {
         "JavaScript": 6508
     },
