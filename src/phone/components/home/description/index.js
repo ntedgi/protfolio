@@ -16,7 +16,7 @@ function SocialNetworks() {
     return <div className="s-social-contacts" >
         <div className='s-scocial-phone-container' onClick={() => { window.open("https://github.com/ntedgi", "_blank")}}>
             <SocialNetwork icon={faGithub} title="Github" uri={"https://github.com/ntedgi"} />
-            <span className='s-scocial-phone-container-text' >Twitter</span>
+            <span className='s-scocial-phone-container-text' >Github</span>
 
         </div>
         <div className='s-scocial-phone-container' onClick={() => {window.open("https://www.linkedin.com/in/naor-tedgi-11314284", "_blank")}}>
