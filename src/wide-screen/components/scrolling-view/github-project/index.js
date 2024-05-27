@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './github-project.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCodeBranch, faStar } from '@fortawesome/free-solid-svg-icons'
-import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons"
+import { faGithub, faJava, faNpm } from "@fortawesome/free-brands-svg-icons"
 import {
     setItemInCache,
     getItemFromCache,
@@ -66,6 +66,9 @@ function Name(props) {
                         </div>
                         {props.npm && <div className='btn npm' onClick={() => { window.open(props.npm, "_blank") }}>
                             <FontAwesomeIcon icon={faNpm} />
+                        </div>}
+                        {props.jitpack && <div className='btn jitpack' onClick={() => { window.open(props.jitpack, "_blank") }}>
+                            <FontAwesomeIcon icon={faJava} />
                         </div>}
                     </div>
                 </div>
@@ -153,7 +156,7 @@ export function GithubProject(props) {
             }}
         >
             <Languages name={props.name} auther={owner} />
-            <Name name={props.name} npm={props.npm} auther={owner} setIsLoading={setIsLoading} />
+            <Name name={props.name} npm={props.npm} auther={owner} jitpack={props.jitpack} setIsLoading={setIsLoading} />
         </div>
 
     )

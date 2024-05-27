@@ -126,7 +126,7 @@ export function GithubProject(props) {
                 window.open(`https://github.com/${owner}/${props.name}`, "_blank")
             }}
         >
-            <Languages name={props.name} />
+            <Languages name={props.name} auther={owner} />
             <Name name={props.name} npm={props.npm} auther={props.auther} />
         </div>
 
