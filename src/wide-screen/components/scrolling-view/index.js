@@ -3,6 +3,7 @@ import SOFContainer from './sof'
 import YouTubeContainer from './youtube'
 import { GithubProject } from './github-project'
 import './projects.scss'
+import WhichDev from '../../../common/markdown';
 
 function GithubProjectPlaceHolder() {
   return <div className='github-placeholder'>.....</div>
@@ -39,6 +40,7 @@ function ProjectsList() {
       <GithubProject name="mocha-parallel-tests" npm={"https://www.npmjs.com/package/mocha9-parallel-tests"} isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
       <GithubProject name="data-stream-counter" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
       <GithubProject name="universal-sentence-encoder" isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
+      <WhichDev/>
       <GithubProjectPlaceHolder isShadowed={isShadowed} onElementMouseEnter={onElementMouseEnter} onElementMouseLeave={onElementMouseLeave} />
     </div>
   )
