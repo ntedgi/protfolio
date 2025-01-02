@@ -22,6 +22,11 @@ function Wrap(props) {
         </div >)
 }
 
+function missingMandatoryFields(state){
+    const mandatoryFields = ["full_name","html_url","description","forks_count","stargazers_count"]
+    return mandatoryFields.some(key=>!state.hasOwnProperty(key))
+}
+
 
 function Name(props) {
     const [state, setState] = useState(getItemFromCache(getCacheProgKey(props.name)))
@@ -44,10 +49,12 @@ function Name(props) {
                             setClickUrl(html_url)
                         })
                 } catch (e) {
+                    console.error(e)
                 }
             }
         }, [props])
-    if (state && Object.keys(state).length > 0)
+        
+    if (state && !missingMandatoryFields(state))
         return (
             <div>
                 <div className='s-project-line'>
@@ -109,7 +116,7 @@ function Languages(props) {
             }
         }, [auther, name])
 
-    if (state && Object.keys(state).length > 0) {
+    if (state && missingMandatoryFields(state,)) {
         return (
             <LanguageRepresentation languages={state} />
         )

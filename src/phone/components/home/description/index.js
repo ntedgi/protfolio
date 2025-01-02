@@ -2,7 +2,7 @@ import React from 'react'
 import './description.scss'
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import profilePic from '../../../../assets/31243793.jpeg';
-import SocialNetwork from '../../common/social-network'
+import SocialNetwork from '../../../../common/social-network'
 function ProfilePic() {
     return (
         <div className='s-avatar-border'>

@@ -6,7 +6,11 @@
     margin-top: 0px;
     transform: scale(1.1);
 }
-
+.youtube-header{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+}
 .youtube-container {
     color: white;
     background-color: #f0f0f0;

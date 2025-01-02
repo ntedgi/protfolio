@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import './youtube.scss'
-import SocialNetwork from '../../common/social-network'
+import SocialNetwork from '../../../../common/social-network'
 
 import {  faYoutube } from "@fortawesome/free-brands-svg-icons"
 
@@ -27,10 +27,11 @@ export default function YouTubeContainer(props) {
             onClick={() => { window.open(clickUrl, "_blank") }}
         >
             <div className='youtube-internal'>
-                <SocialNetwork size="x-large" icon={faYoutube} title="fa-youtube" uri={clickUrl} />
                 <div className='video-text-container'>
                     <div className='title'>"MALICIOUS SPI" SIMULATOR</div>
-                    <div className='video-discription'>prototype of "Time of Check Time of use attack" on SPI Protocol exploiting this weakness using BeagalBoard-X15 And beagle bone black</div>
+                    <div className='video-discription'>prototype of "Time of Check Time of use attack" on SPI Protocol 
+                        <br>exploiting this weakness using BeagalBoard-X15  And beagle bone black</br>
+                        </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import './about.scss'
 import Description from '../description'
 import { faUnity } from "@fortawesome/free-brands-svg-icons"
-import SocialNetwork from '../../common/social-network'
+import SocialNetwork from '../../../../common/social-network'
 
 function JobTitleDiscriptons() {
     return (

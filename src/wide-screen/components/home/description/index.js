@@ -3,7 +3,7 @@ import './description.scss'
 import { faFacebook, faTwitter, faGithub, faGitlab, faInstagram, faDocker, faStackOverflow, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
 import profilePic from '../../../../assets/31243793.jpeg';
-import SocialNetwork from '../../common/social-network'
+import SocialNetwork from '../../../../common/social-network'
 function ProfilePic() {
     return (
         <div className='avatar-border'>
