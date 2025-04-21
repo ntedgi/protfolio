@@ -1,5 +1,4 @@
 import React from 'react';
-import YouTubeContainer from './youtube'
 import { GithubProject } from './github-project'
 import './projects.scss'
 
@@ -10,7 +9,6 @@ function ProjectsList() {
       <GithubProject name="node-efficientnet" />
       <GithubProject name="kube-argocd-helm-workshop" />
       <GithubProject name="loss-context-with-async-local-storage" />
-      <YouTubeContainer />
       <GithubProject name="monaorepo" />
       <GithubProject name="Crowlerito" />
       <GithubProject name="node" auther="nodejs" />
