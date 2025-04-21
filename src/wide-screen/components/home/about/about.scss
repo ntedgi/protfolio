@@ -6,6 +6,7 @@
     border-bottom-width: 1px;
     border-bottom-color: rgba(0, 0, 0, .125);
     color: white;
+    gap: 2rem;
 
     .link {
         -webkit-text-size-adjust: 100%;
@@ -250,4 +251,13 @@
 .job-title-container{
     display: flex;
     align-items: baseline;
+}
+
+.scroll-highlighter-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }

@@ -3,6 +3,7 @@ import './about.scss'
 import Description from '../description'
 import { faUnity } from "@fortawesome/free-brands-svg-icons"
 import SocialNetwork from '../../../../common/social-network'
+import ScrollHighlighter from '../../../../common/ScrollHighlighter'
 
 function JobTitleDiscriptons() {
     return (
@@ -33,11 +34,12 @@ function Overviow() {
             </div>
         </div>
     </div>
-
 }
+
 function Name() {
     return <h1 className='about-name'>Naor Tedgi</h1>
 }
+
 function JobTitle() {
     return <div className='job-title-container'>
         <h1 className='about-job-title'>{"Tech Lead and Individual Contributor at Unity"}</h1>
@@ -46,6 +48,11 @@ function JobTitle() {
 }
 
 export default function About() {
+    const sections = [
+        { id: 'github-projects', title: 'GitHub Projects' },
+        { id: 'videos', title: 'Videos' },
+        { id: 'presentations', title: 'Presentations' }
+    ];
 
     return (
         <div className='about'>
@@ -55,8 +62,13 @@ export default function About() {
                 <JobTitleDiscriptons />
             </div>
             <div>
+                <div className="scroll-highlighter-container">
+                    <ScrollHighlighter sections={sections} />
+                </div>
                 <Overviow />
+
                 <Description />
+                
             </div>
         </div>
     )
