@@ -20,3 +20,60 @@
     justify-items: center;
     justify-content: space-between;
 }
+
+.section-header {
+    padding: 2rem 2rem 1rem;
+    padding-left: 16px;
+    
+    .header-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    h2 {
+        color: #ffffff;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin: 0;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 3rem;
+            height: 0.25rem;
+            background-color: #4a9eff;
+            border-radius: 2px;
+        }
+    }
+
+    .download-button {
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+        padding: 0.75rem;
+
+        &:hover {
+            background-color: #3d3d3d;
+        }
+    }
+}
+
+// Add padding to section content to align with items
+section > *:not(.section-header) {
+    padding-left: 32px;
+}

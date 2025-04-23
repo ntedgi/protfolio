@@ -6,6 +6,7 @@
     border-bottom-width: 1px;
     border-bottom-color: rgba(0, 0, 0, .125);
     color: white;
+    gap: 2rem;
 
     .link {
         -webkit-text-size-adjust: 100%;
@@ -195,6 +196,7 @@
     margin-top: 32px;
 
     .jtd-text {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
         -webkit-text-size-adjust: 100%;
         tab-size: 4;
         font-feature-settings: normal;
@@ -250,4 +252,12 @@
 .job-title-container{
     display: flex;
     align-items: baseline;
+}
+
+.scroll-highlighter-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
