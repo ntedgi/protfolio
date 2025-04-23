@@ -20,7 +20,7 @@ function Name() {
 }
 function JobTitle() {
     return <div className='job-title-container'>
-        <h1 className='about-job-title'>{"Tech Lead and Individual Contributor at Unity"}</h1>
+        <h1 className='about-job-title'>{"Staff Software Engineer at Unity"}</h1>
         <SocialNetwork icon={faUnity} title="Unity" uri="https://unity.com/" />
     </div>
 }
