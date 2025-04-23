@@ -5,61 +5,45 @@ import { getItemFromCache } from "../../../../common/cache";
 import { getCacheLangKey } from "../../../../common/github-client";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { LanguageRepresentation } from "../common/lang-representation";
+import { FaPlay } from 'react-icons/fa';
 
-export default function YouTubeContainer(props) {
-  const [isHovered, setIsHovered] = useState(false);
-  const [state, setState] = useState(null);
-  useEffect(() => {
-    const languages = getItemFromCache(
-      getCacheLangKey("SPI_slave_driver_implementation")
-    );
-    setState(languages);
-  }, []);
-  const clickUrl =
-    "https://www.youtube.com/watch?v=Y4YbVcsGGQk&ab_channel=NaorTedgi";
-  const { isShadowed, onElementMouseEnter, onElementMouseLeave } = props;
-  let shouldShadow = isHovered ? "" : isShadowed;
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    onElementMouseEnter();
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    onElementMouseLeave();
-  };
-
+const videos = [
+  {
+    title: "MALICIOUS SPI SIMULATOR",
+    subtitle: `Prototype of "Time of Check Time of use attack" on SPI Protocol exploiting this weakness using BeagalBoard-X15  And beagle bone black`,
+    date: "JUNE 12, 2017",
+    thumbnail: "https://img.youtube.com/vi/Y4YbVcsGGQk/maxresdefault.jpg", 
+    link: "https://www.youtube.com/watch?v=Y4YbVcsGGQk&ab_channel=NaorTedgi"
+  }
+]
+const VideoCard = ({ video }) => {
   return (
-    <div
-      className={`youtube-container ${isHovered ? "hovered" : ""} ${
-        shouldShadow ? "shedowed" : ""
-      }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={() => {
-        window.open(clickUrl, "_blank");
-      }}
-    >
-      <div className="youtube-internal">
-        <div className="you-tube-icon-container">
-          {state && <LanguageRepresentation languages={state} />}
-        </div>
-        <div className="video-text-container">
-          <div className="youtube-header">
-            <div className="title">"MALICIOUS SPI" SIMULATOR</div>
-            <SocialNetwork
-              size="large"
-              icon={faYoutube}
-              title="fa-youtube"
-              uri={clickUrl}
-            />
-          </div>
-          <div className="video-discription">
-            prototype of "Time of Check Time of use attack" on SPI Protocol
-            exploiting this weakness using BeagalBoard-X15 And beagle bone black
-          </div>
-        </div>
+    <a href={video.link} target="_blank" rel="noopener noreferrer" className="video-card">
+      <div className="play-button">
+        <FaPlay />
+      </div>
+      <div className="video-content">
+        <h2 className="video-title">{video.title}</h2>
+        <p className="video-subtitle">{video.subtitle}</p>
+        <p className="video-date">{video.date}</p>
+      </div>
+    </a>
+  );
+};
+
+const YouTubeContainer = () => {
+  return (
+    <div className="videos-container">
+      <div className="videos-grid">
+        {videos.map((video, index) => (
+          <VideoCard key={index} video={video} />
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default YouTubeContainer;
+
+
+  

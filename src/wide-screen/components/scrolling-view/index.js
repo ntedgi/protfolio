@@ -3,9 +3,23 @@ import YouTubeContainer from "./youtube";
 import { GithubProject } from "./github-project";
 import "./projects.scss";
 import WhichDev from "../../../common/markdown";
+import Resume from "./resume";
+import Presentations from "./presentations";
+import { FaDownload } from "react-icons/fa";
 
 function GithubProjectPlaceHolder() {
   return <div className="github-placeholder">.....</div>;
+}
+
+function SectionHeader({ title, children }) {
+  return (
+    <div className="section-header">
+      <div className="header-content">
+        <h2>{title}</h2>
+        {children}
+      </div>
+    </div>
+  );
 }
 
 function ProjectsList() {
@@ -18,9 +32,14 @@ function ProjectsList() {
     setIsShadowed(false);
   };
 
+  const handleDownload = () => {
+    window.open('/resume.md', '_blank');
+  };
+
   return (
     <div className="projects">
       <section id="github-projects">
+        <SectionHeader title="Open Source" />
         <GithubProject
           name="cld3-kotlin"
           isShadowed={isShadowed}
@@ -137,7 +156,13 @@ function ProjectsList() {
         />
       </section>
 
+      <section id="presentations">
+        <SectionHeader title="Presentations" />
+        <Presentations />
+      </section>
+
       <section id="videos">
+        <SectionHeader title="Videos" />
         <YouTubeContainer
           isShadowed={isShadowed}
           onElementMouseEnter={onElementMouseEnter}
@@ -145,8 +170,17 @@ function ProjectsList() {
         />
       </section>
 
-      <section id="presentations">
-        <WhichDev />
+      <section id="resume">
+        <SectionHeader title="Resume">
+          <button 
+            className="download-button" 
+            onClick={handleDownload}
+            title="Download Resume"
+          >
+            <FaDownload />
+          </button>
+        </SectionHeader>
+        <Resume />
       </section>
 
       <GithubProjectPlaceHolder

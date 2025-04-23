@@ -196,6 +196,7 @@
     margin-top: 32px;
 
     .jtd-text {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif;
         -webkit-text-size-adjust: 100%;
         tab-size: 4;
         font-feature-settings: normal;
@@ -256,7 +257,6 @@
 .scroll-highlighter-container {
     margin-top: 2rem;
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     width: 100%;
     box-sizing: border-box;

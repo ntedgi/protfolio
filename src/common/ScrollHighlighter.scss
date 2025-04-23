@@ -8,23 +8,118 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2rem;
 }
 
 .scroll-highlighter-item {
-  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.1);
   color: #666;
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  .section-number {
+    font-size: 14px;
+    color: #666;
+    opacity: 0.8;
+    min-width: 2.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .section-line {
+    height: 1px;
+    background-color: #666;
+    width: 2rem;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+  }
+
+  .section-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    color: #fff;
+
+    .section-number {
+      color: #fff;
+    }
+
+    .section-line {
+      background-color: #fff;
+      width: 4rem;
+    }
+  }
+
+  &.active {
+    color: #fff;
+
+    .section-number {
+      color: #fff;
+    }
+
+    .section-line {
+      background-color: #fff;
+      width: 4rem;
+    }
+
+    .section-title {
+      font-weight: 500;
+    }
+  }
+
+  &.clicked {
+    animation: click-pulse 0.3s ease;
+
+    .section-line {
+      animation: line-expand 0.3s ease;
+    }
+
+    .section-number,
+    .section-title {
+      animation: text-bright 0.3s ease;
+    }
+  }
 }
-.scroll-highlighter-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #333;
+
+@keyframes click-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.scroll-highlighter-item.active {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #000;
-  font-weight: bold;
+
+@keyframes line-expand {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes text-bright {
+  0% {
+    color: #fff;
+  }
+  50% {
+    color: #4a9eff;
+  }
+  100% {
+    color: #fff;
+  }
 } 
