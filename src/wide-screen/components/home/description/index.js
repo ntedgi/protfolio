@@ -18,7 +18,7 @@ function SocialNetworks() {
         <SocialNetwork icon={faStackOverflow} title="StackOverflow" uri={`https://stackoverflow.com/users/4267015/naor-tedgi`} />
         <SocialNetwork icon={faGithub} title="Github" uri={"https://github.com/ntedgi"} />
         <SocialNetwork icon={faLinkedinIn} title="Linkedin" uri={`https://www.linkedin.com/in/naor-tedgi-11314284/`} />
-        <SocialNetwork icon={faGitlab} title="GitLab" uri={"https://gitlab.com/Naor-Tedgi"} />
+        <SocialNetwork icon={faGitlab} title="GitLab" uri={"https://gitlab.com/ntedgi"} />
         <SocialNetwork icon={faDocker} title="DockerHub" uri={"https://hub.docker.com/u/naortedgi"} />
         <SocialNetwork icon={faFacebook} title="Facebook" uri={"https://www.facebook.com/NaorTedgi2205/"} />
         <SocialNetwork icon={faTwitter} title="Twitter" uri={"https://twitter.com/naor_tedgi"} />
