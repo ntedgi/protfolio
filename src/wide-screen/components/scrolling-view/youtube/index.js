@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./youtube.scss";
-import SocialNetwork from "../../../../common/social-network";
-import { getItemFromCache } from "../../../../common/cache";
-import { getCacheLangKey } from "../../../../common/github-client";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { LanguageRepresentation } from "../common/lang-representation";
 import { FaPlay } from 'react-icons/fa';
 
 const videos = [

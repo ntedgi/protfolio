@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import YouTubeContainer from "./youtube";
 import { GithubProject } from "./github-project";
 import "./projects.scss";
-import WhichDev from "../../../common/markdown";
 import Presentations from "./presentations";
 
 function GithubProjectPlaceHolder() {
