@@ -1,17 +1,25 @@
 # Naor Tedgi
 
-**Staff Software Engineer**\
+**Principal Software Engineer - Backend and Data**\
 **Beer Sheva, Israel | 0545530731 | naor.tedgi@gmail.com | naortedgi.com**\
 **GitHub: ntedgi | StackOverflow: 5.7K Rep | LinkedIn**
 
 ## Professional Summary
 
-Experienced software engineering leader with 8+ years in full-stack development, machine learning, and technical leadership. Currently at Unity, leading teams to architect scalable gaming infrastructure. Skilled in distributed systems, cross-functional team leadership, and innovation. Actively contribute to open-source projects with over 10K weekly downloads and deliver tech talks and workshops at Unity's Backend Guild (slides: https://github.com/ntedgi/my-tech-talks).
+Experienced software engineering leader with 10+ years in full-stack development, backend, data, and technical leadership. Currently at Palo Alto Networks as Principal Software Engineer - Backend and Data, driving engineering excellence across cybersecurity platforms. Skilled in distributed systems, cross-functional team leadership, and innovation. Actively contribute to open-source projects with over 10K weekly downloads and deliver tech talks and workshops (slides: https://github.com/ntedgi/my-tech-talks).
 
 ## Professional Experience
 
+**Principal Software Engineer - Backend and Data | Palo Alto Networks**\
+*August 2025 - Present*
+
+- Drive backend and data architecture initiatives across cybersecurity products and platforms.
+- Design scalable distributed systems handling large-scale security telemetry and analytics workloads.
+- Mentor engineers, establish technical standards, and drive engineering best practices.
+- **Tech Stack**: Backend services, Data platforms, Distributed systems, Cloud-native infrastructure.
+
 **Staff Software Engineer | Unity**\
-*April 2025 - Present*
+*April 2025 - August 2025*
 
 - Lead 3 engineering teams (Demand, Supply, Analytics) in developing advertising and monetization platforms.
 - Architect large-scale distributed systems handling millions of daily ad requests.
