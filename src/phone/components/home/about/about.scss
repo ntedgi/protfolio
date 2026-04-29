@@ -189,6 +189,26 @@
     line-height: 1;
 }
 
+.s-name-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.about-job-title.ai-job-title-line {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    margin-top: 10px;
+}
+
+.job-title-container {
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .p-job-title-discriptopn-container {
     font-size: 14px;
     margin-top: 32px;

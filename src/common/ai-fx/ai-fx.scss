@@ -1,0 +1,627 @@
+/* AI / Agentic visual effects shared across wide and phone layouts */
+
+:root {
+    --ai-accent-1: #00e6ff;
+    /* cyan */
+    --ai-accent-2: #7c4dff;
+    /* violet */
+    --ai-accent-3: #ff2dd1;
+    /* magenta */
+    --ai-accent-4: #18ffa3;
+    /* mint */
+    --ai-bg-deep: #0b0d12;
+    --ai-card-bg: rgba(20, 22, 32, 0.55);
+    --ai-card-border: rgba(124, 77, 255, 0.18);
+}
+
+/* =================================================================
+   ANIMATED BACKGROUND
+   ================================================================= */
+
+.ai-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(124, 77, 255, 0.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 100%, rgba(0, 230, 255, 0.14), transparent 65%),
+        linear-gradient(180deg, #07080d 0%, #0b0d14 60%, #07080d 100%);
+}
+
+.ai-bg-grid {
+    position: absolute;
+    inset: -2px;
+    background-image:
+        linear-gradient(rgba(124, 77, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 255, 0.07) 1px, transparent 1px);
+    background-size: 48px 48px, 48px 48px;
+    mask-image: radial-gradient(ellipse at 30% 20%, rgba(0, 0, 0, 0.95), transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 30% 20%, rgba(0, 0, 0, 0.95), transparent 75%);
+    animation: ai-grid-drift 22s linear infinite;
+}
+
+.ai-bg-aurora {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(600px circle at 15% 20%, rgba(124, 77, 255, 0.22), transparent 60%),
+        radial-gradient(500px circle at 85% 75%, rgba(0, 230, 255, 0.17), transparent 65%),
+        radial-gradient(400px circle at 50% 110%, rgba(255, 45, 209, 0.14), transparent 60%);
+    filter: blur(8px);
+    animation: ai-aurora 16s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+}
+
+.ai-bg-scanline {
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(180deg,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 4px);
+    mix-blend-mode: overlay;
+    opacity: .35;
+    pointer-events: none;
+}
+
+/* Floating particles (data dots) */
+.ai-bg-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.ai-bg-particles .p {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ai-accent-1);
+    box-shadow: 0 0 8px var(--ai-accent-1);
+    opacity: 0;
+    animation: ai-particle-rise 16s linear infinite;
+}
+
+@for $i from 0 through 17 {
+    .ai-bg-particles .p-#{$i} {
+        left: ($i * 5.5%) + 1%;
+        animation-delay: #{$i * 0.7}s;
+        animation-duration: #{12 + ($i % 7)}s;
+
+        @if $i % 4 == 0 {
+            background: var(--ai-accent-2);
+            box-shadow: 0 0 8px var(--ai-accent-2);
+        }
+
+        @else if $i % 4 == 1 {
+            background: var(--ai-accent-4);
+            box-shadow: 0 0 8px var(--ai-accent-4);
+        }
+
+        @else if $i % 4 == 2 {
+            background: var(--ai-accent-3);
+            box-shadow: 0 0 8px var(--ai-accent-3);
+        }
+    }
+}
+
+@keyframes ai-particle-rise {
+    0% {
+        transform: translateY(110vh) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .9;
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(20px);
+    }
+
+    90% {
+        opacity: .9;
+    }
+
+    100% {
+        transform: translateY(-10vh) translateX(-12px);
+        opacity: 0;
+    }
+}
+
+@keyframes ai-grid-drift {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 48px 48px, -48px 48px;
+    }
+}
+
+@keyframes ai-aurora {
+    0% {
+        opacity: .65;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, -10px, 0) scale(1.04);
+    }
+}
+
+/* Make sure regular content sits above the background */
+.container > .static-side,
+.container > .scrolling-side,
+.s-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* =================================================================
+   GRADIENT NAME (shimmering)
+   ================================================================= */
+
+.ai-gradient-text {
+    background: linear-gradient(90deg,
+            var(--ai-accent-1) 0%,
+            #ffffff 35%,
+            var(--ai-accent-2) 70%,
+            var(--ai-accent-3) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: ai-shimmer 6s linear infinite, ai-fade-in 0.8s ease both;
+    text-shadow: 0 0 24px rgba(124, 77, 255, 0.25);
+    letter-spacing: -0.02em;
+}
+
+@keyframes ai-shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes ai-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =================================================================
+   CARET
+   ================================================================= */
+
+.ai-caret {
+    display: inline-block;
+    width: 9px;
+    height: 1em;
+    margin-left: 6px;
+    vertical-align: -2px;
+    background: linear-gradient(180deg, var(--ai-accent-1), var(--ai-accent-2));
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 230, 255, 0.7);
+    animation: ai-blink 1s steps(2, start) infinite;
+}
+
+.ai-caret-inline {
+    margin-left: 4px;
+    width: 8px;
+    height: 1.05em;
+}
+
+@keyframes ai-blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+/* =================================================================
+   STATUS BADGE
+   ================================================================= */
+
+.ai-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(24, 255, 163, 0.08);
+    border: 1px solid rgba(24, 255, 163, 0.35);
+    color: #c8ffe6;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 0 24px rgba(24, 255, 163, 0.12) inset;
+}
+
+.ai-status-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ai-accent-4);
+    box-shadow: 0 0 10px var(--ai-accent-4), 0 0 18px var(--ai-accent-4);
+    animation: ai-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes ai-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: .55;
+    }
+}
+
+/* =================================================================
+   TAG CHIPS
+   ================================================================= */
+
+.ai-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.ai-chip {
+    --c1: var(--ai-accent-1);
+    --c2: var(--ai-accent-2);
+    position: relative;
+    padding: 6px 13px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #e8eaff;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+    transition: transform .25s ease, color .25s ease, background .25s ease, box-shadow .25s ease;
+    cursor: default;
+}
+
+.ai-chip::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: .85;
+    pointer-events: none;
+}
+
+.ai-chip:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+    background: rgba(124, 77, 255, 0.12);
+    box-shadow:
+        0 6px 18px rgba(0, 230, 255, 0.18),
+        0 0 0 1px rgba(124, 77, 255, 0.18) inset;
+}
+
+.ai-chip.c-cyber {
+    --c1: var(--ai-accent-3);
+    --c2: var(--ai-accent-2);
+}
+
+.ai-chip.c-data {
+    --c1: var(--ai-accent-1);
+    --c2: var(--ai-accent-4);
+}
+
+.ai-chip.c-ai {
+    --c1: var(--ai-accent-2);
+    --c2: var(--ai-accent-1);
+}
+
+.ai-chip.c-agent {
+    --c1: var(--ai-accent-4);
+    --c2: var(--ai-accent-1);
+}
+
+.ai-chip.c-backend {
+    --c1: var(--ai-accent-2);
+    --c2: var(--ai-accent-3);
+}
+
+/* =================================================================
+   AVATAR GLOW RING
+   ================================================================= */
+
+.ai-avatar-ring {
+    position: relative;
+    display: inline-block;
+    padding: 4px;
+    border-radius: 50%;
+    isolation: isolate;
+    z-index: 1;
+    box-shadow:
+        0 0 24px rgba(0, 230, 255, 0.35),
+        0 0 48px rgba(124, 77, 255, 0.25);
+}
+
+.ai-avatar-ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+            var(--ai-accent-1),
+            var(--ai-accent-2),
+            var(--ai-accent-3),
+            var(--ai-accent-4),
+            var(--ai-accent-1));
+    animation: ai-spin 8s linear infinite;
+    z-index: -1;
+}
+
+.ai-avatar-ring::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+            var(--ai-accent-1),
+            var(--ai-accent-2),
+            var(--ai-accent-3),
+            var(--ai-accent-4),
+            var(--ai-accent-1));
+    filter: blur(16px);
+    opacity: .4;
+    z-index: -2;
+    animation: ai-spin 12s linear infinite reverse;
+}
+
+.ai-avatar-ring > img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    border-radius: 50%;
+}
+
+@keyframes ai-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =================================================================
+   JOB TITLE LINE
+   ================================================================= */
+
+.ai-job-title-line {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.ai-job-title-line .at {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 4px;
+    font-weight: 400;
+}
+
+.ai-job-title-line .company {
+    color: var(--ai-accent-1);
+    text-shadow: 0 0 12px rgba(0, 230, 255, 0.35);
+    font-weight: 700;
+}
+
+.ai-job-title-line .company-with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-job-title-line .company-with-icon .social-network {
+    margin-left: 0;
+    display: inline-flex;
+    align-items: center;
+    color: var(--ai-accent-1);
+    filter: drop-shadow(0 0 6px rgba(0, 230, 255, 0.55));
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.ai-job-title-line .company-with-icon .social-network:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 0 10px rgba(0, 230, 255, 0.85));
+}
+
+/* =================================================================
+   TYPEWRITER TAGLINE
+   ================================================================= */
+
+.ai-typewriter {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(11, 13, 18, 0.55);
+    border: 1px solid rgba(124, 77, 255, 0.22);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    color: #d6e0ff;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow:
+        inset 0 0 12px rgba(124, 77, 255, 0.10),
+        0 0 24px rgba(0, 230, 255, 0.05);
+    min-height: 1.6em;
+    max-width: 100%;
+}
+
+.ai-typewriter-prompt {
+    color: var(--ai-accent-4);
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(24, 255, 163, 0.65);
+}
+
+.ai-typewriter-text {
+    color: #f1f4ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =================================================================
+   GLASS / NEON ENHANCEMENTS APPLIED TO EXISTING COMPONENTS
+   ================================================================= */
+
+/* GitHub project cards: glassmorphism + neon hover border */
+.gh-project-container {
+    position: relative;
+    background: var(--ai-card-bg) !important;
+    border: 1px solid var(--ai-card-border) !important;
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease !important;
+}
+
+.gh-project-container::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 14px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--ai-accent-1), var(--ai-accent-2), var(--ai-accent-3));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+}
+
+.gh-project-container:hover {
+    transform: translateY(-3px) scale(1.01) !important;
+    background: rgba(28, 30, 42, 0.7) !important;
+    box-shadow:
+        0 12px 40px rgba(0, 230, 255, 0.10),
+        0 0 0 1px rgba(124, 77, 255, 0.25) inset;
+}
+
+.gh-project-container:hover::before {
+    opacity: 1;
+}
+
+.gh-project-container .project-name {
+    background: linear-gradient(90deg, #ffffff, #d8d6ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Presentation cards: glassmorphism + animated underline on title */
+.presentation-card {
+    background: var(--ai-card-bg) !important;
+    border: 1px solid var(--ai-card-border);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+}
+
+.presentation-card:hover {
+    transform: translateY(-3px);
+    background: rgba(28, 30, 42, 0.7) !important;
+    border-color: rgba(0, 230, 255, 0.35);
+    box-shadow:
+        0 16px 40px rgba(0, 230, 255, 0.10),
+        0 0 0 1px rgba(124, 77, 255, 0.18) inset;
+}
+
+.presentation-card .event-name {
+    background: linear-gradient(90deg, var(--ai-accent-1), var(--ai-accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Section headers: gradient underline + command-prompt prefix */
+.section-header h2 {
+    position: relative;
+}
+
+.section-header h2::before {
+    content: "› ";
+    color: var(--ai-accent-4);
+    text-shadow: 0 0 8px rgba(24, 255, 163, 0.6);
+    margin-right: 4px;
+    font-weight: 700;
+}
+
+.section-header h2::after {
+    background: linear-gradient(90deg, var(--ai-accent-1), var(--ai-accent-2), var(--ai-accent-3)) !important;
+    width: 4rem !important;
+    box-shadow: 0 0 12px rgba(0, 230, 255, 0.4);
+}
+
+/* ScrollHighlighter active item gets a neon glow */
+.scroll-highlighter-item {
+
+    .section-line {
+        background: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    &:hover .section-line,
+    &.active .section-line {
+        background: linear-gradient(90deg, var(--ai-accent-1), var(--ai-accent-2)) !important;
+        box-shadow: 0 0 10px rgba(0, 230, 255, 0.55);
+    }
+
+    &.active {
+        .section-title {
+            background: linear-gradient(90deg, #ffffff, var(--ai-accent-1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        .section-number {
+            color: var(--ai-accent-1) !important;
+            text-shadow: 0 0 8px rgba(0, 230, 255, 0.5);
+        }
+    }
+}

@@ -7,7 +7,9 @@ import SocialNetwork from '../../../../common/social-network'
 function ProfilePic() {
     return (
         <div className='avatar-border'>
-            <img className="avatar" src={profilePic} alt='avatar' width="20px" />
+            <span className='ai-avatar-ring'>
+                <img className="avatar" src={profilePic} alt='avatar' width="20px" />
+            </span>
         </div>
     )
 }

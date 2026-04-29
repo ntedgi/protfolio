@@ -1,17 +1,20 @@
 .projects-container {
     height: 100%;
-    padding: 88px;
+    padding: 48px 56px;
+    box-sizing: border-box;
     overflow-y: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scrollbar-color: black transparent;
+
     .projects {
         display: flex;
         flex-direction: column;
-        
+        max-width: 100%;
     }
 
     .github-placeholder {
-        padding: 100px;
+        padding: 60px;
     }
 }
 

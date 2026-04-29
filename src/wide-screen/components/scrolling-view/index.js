@@ -3,9 +3,7 @@ import YouTubeContainer from "./youtube";
 import { GithubProject } from "./github-project";
 import "./projects.scss";
 import WhichDev from "../../../common/markdown";
-import Resume from "./resume";
 import Presentations from "./presentations";
-import { FaDownload } from "react-icons/fa";
 
 function GithubProjectPlaceHolder() {
   return <div className="github-placeholder">.....</div>;
@@ -30,10 +28,6 @@ function ProjectsList() {
 
   const onElementMouseLeave = () => {
     setIsShadowed(false);
-  };
-
-  const handleDownload = () => {
-    window.open('/resume.md', '_blank');
   };
 
   return (
@@ -168,19 +162,6 @@ function ProjectsList() {
           onElementMouseEnter={onElementMouseEnter}
           onElementMouseLeave={onElementMouseLeave}
         />
-      </section>
-
-      <section id="resume">
-        <SectionHeader title="Resume">
-          <button 
-            className="download-button" 
-            onClick={handleDownload}
-            title="Download Resume"
-          >
-            <FaDownload />
-          </button>
-        </SectionHeader>
-        <Resume />
       </section>
 
       <GithubProjectPlaceHolder

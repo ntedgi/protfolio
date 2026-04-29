@@ -46,9 +46,9 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
+    display: block;
+    border: 2px solid #0b0d12;
+    background: #0b0d12;
 }
 .s-text-area {
     font-size: 20px;

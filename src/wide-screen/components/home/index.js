@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import About from './about'
 import "./app.scss"
 import ScrollingView from '../scrolling-view';
+import { AIBackground } from '../../../common/ai-fx';
 
 export default function Phome() {
     const [listRef, setListRef] = useState(false);
@@ -41,6 +42,7 @@ export default function Phome() {
 
     return (
         <div className='container'>
+            <AIBackground />
             <div className="static-side" onWheel={handleKeyPress}>
                 <About />
             </div>
