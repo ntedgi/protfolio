@@ -28,7 +28,7 @@
   },
   "scripts": {
     "prestart": "node scripts/copy-resume.js",
-    "prebuild": "node scripts/copy-resume.js",
+    "prebuild": "npm i && node scripts/copy-resume.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
