@@ -552,26 +552,70 @@
     -webkit-text-fill-color: transparent;
 }
 
-/* Presentation cards: glassmorphism + animated underline on title */
-.presentation-card {
+/* Presentation + Video cards: shared glassmorphism */
+.presentation-card,
+.video-card {
     background: var(--ai-card-bg) !important;
-    border: 1px solid var(--ai-card-border);
+    border: 1px solid var(--ai-card-border) !important;
     border-radius: 14px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+    overflow: hidden;
 }
 
-.presentation-card:hover {
+.presentation-card:hover,
+.video-card:hover {
     transform: translateY(-3px);
     background: rgba(28, 30, 42, 0.7) !important;
-    border-color: rgba(0, 230, 255, 0.35);
+    border-color: rgba(0, 230, 255, 0.35) !important;
     box-shadow:
         0 16px 40px rgba(0, 230, 255, 0.10),
         0 0 0 1px rgba(124, 77, 255, 0.18) inset;
 }
 
 .presentation-card .event-name {
+    background: linear-gradient(90deg, var(--ai-accent-1), var(--ai-accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Video cards: tweak the play button + title to match the AI palette */
+.video-card .play-button {
+    background: rgba(0, 230, 255, 0.12) !important;
+    border: 1px solid rgba(0, 230, 255, 0.35);
+    box-shadow:
+        0 0 24px rgba(0, 230, 255, 0.18),
+        inset 0 0 18px rgba(124, 77, 255, 0.12);
+    transition: transform .25s ease, background .25s ease, box-shadow .25s ease !important;
+}
+
+.video-card .play-button svg {
+    color: var(--ai-accent-1) !important;
+    filter: drop-shadow(0 0 6px rgba(0, 230, 255, 0.6));
+}
+
+.video-card:hover .play-button {
+    background: rgba(0, 230, 255, 0.22) !important;
+    transform: scale(1.08) !important;
+    box-shadow:
+        0 0 32px rgba(0, 230, 255, 0.4),
+        inset 0 0 22px rgba(124, 77, 255, 0.2);
+}
+
+.video-card:hover .play-button svg {
+    color: #ffffff !important;
+}
+
+.video-card .video-title {
+    background: linear-gradient(90deg, #ffffff, #d8d6ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.video-card .video-date {
     background: linear-gradient(90deg, var(--ai-accent-1), var(--ai-accent-2));
     -webkit-background-clip: text;
     background-clip: text;
