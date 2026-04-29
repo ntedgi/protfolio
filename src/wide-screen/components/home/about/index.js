@@ -10,7 +10,7 @@ function JobTitleDiscriptons() {
     return (
         <div className='job-title-discriptopn-container'>
             <div className='jtd-text'>
-                {`Experienced software engineering leader with 8+ years in full-stack development, backend, data, and technical leadership. Currently at Palo Alto Networks as Principal Software Engineer - Backend and Data, driving engineering excellence across cybersecurity platforms. Skilled in distributed systems, cross-functional team leadership, and innovation. Actively contribute to open-source projects with over 10K weekly downloads and deliver tech talks and workshops.`}
+                {`Experienced software engineering leader with 10+ years in full-stack development, backend, data, and technical leadership. Currently at Palo Alto Networks as Principal Software Engineer - Backend and Data, driving engineering excellence across cybersecurity platforms. Skilled in distributed systems, cross-functional team leadership, and innovation. Actively contribute to open-source projects with over 10K weekly downloads and deliver tech talks and workshops.`}
             </div>
             <AIChips />
         </div>
